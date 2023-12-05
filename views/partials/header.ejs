@@ -17,4 +17,18 @@
 <body>
   <header>
     <span class='gigamajig'>gigamajig</span>
+    <nav>
+      <% if (!user) { %>
+        <div class='nav-button'>
+          <a href='/auth/google'>Log in with</a>
+          <a href='/auth/google'>
+            <img id='google-icon' src='https://i.imgur.com/FHjYyi0.png'/>
+          </a>
+        </div>
+      <% } else { %>
+        <div class='nav-button'>
+          <a href='logout'>Log out</a>
+        </div>
+      <% } %>
+    </nav>
   </header>

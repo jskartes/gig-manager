@@ -2,6 +2,7 @@
   --body-bgcol: #dde;
   --header-bgcol: rgb(168, 180, 215);
   --header-box-shadow: 0 4px 5px #666;
+  --header-button-bgcol: rgba(50, 59, 86, 0.15);
   --header-logo-col: rgb(50, 59, 86);
 }
 
@@ -12,6 +13,10 @@
 
 .gigamajig {
   font-family: 'ADLaM Display', cursive;
+}
+
+.avatar {
+  border-radius: 50%;
 }
 
 body {
@@ -27,6 +32,7 @@ header {
   box-shadow: var(--header-box-shadow);
   display: flex;
   height: 8vmin;
+  justify-content: space-between;
   padding: 3vmin;
 }
 
@@ -34,4 +40,33 @@ header > span {
   color: var(--header-logo-col);
   font-size: 5vmin;
   padding-bottom: 1.25vmin;
+}
+
+header > nav, header > nav > .nav-button {
+  align-items: center;
+  display: flex;
+}
+
+header > nav > .nav-button {
+  background-color: var(--header-button-bgcol);
+  border-radius: 6px;
+  height: 4.5vmin;
+  margin-right: 2vmin;
+  padding: 0 1.5vmin;
+}
+
+header > nav > .nav-button:last-child {
+  margin-right: 0;
+}
+
+header > nav > .nav-button > a {
+  color: var(--body-bgcol);
+  font-size: 1.75vmin;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#google-icon {
+  height: 3vmin;
+  margin-left: 0.5vmin;
 }

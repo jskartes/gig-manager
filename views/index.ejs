@@ -1,5 +1,7 @@
 <%- include('./partials/header') %>
 
-
+<% if (user) { %>
+  <p>Welcome, <img class='avatar' src='<%= user.avatar %>'/>&nbsp;<%= user.name %>!</p>
+<% } %>
 
 <%- include('./partials/footer') %>
