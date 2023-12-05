@@ -1,5 +1,7 @@
 :root {
   --body-bgcol: #dde;
+  --cal-day-hover-bgcol: rgba(255, 69, 0, 0.05);
+  --cal-day-hover-border-col: orange;
   --header-bgcol: rgb(168, 180, 215);
   --header-box-shadow: 0 4px 5px #666;
   --header-button-bgcol: rgba(50, 59, 86, 0.15);
@@ -60,13 +62,65 @@ header > nav > .nav-button:last-child {
 }
 
 header > nav > .nav-button > a {
-  color: var(--body-bgcol);
-  font-size: 1.75vmin;
+  color: white;
+  font-size: 1.85vmin;
   font-weight: bold;
   text-decoration: none;
 }
 
 #google-icon {
-  height: 3vmin;
+  background-color: white;
+  border-radius: 50%;
+  height: 2.75vmin;
   margin-left: 0.5vmin;
+}
+
+#calendar {
+  display: grid;
+  gap: 6px;
+  grid-template-columns: repeat(7, 1fr);
+  margin: 8vmin auto 0;
+  width: 80vw;
+}
+
+.calendar-day {
+  background-color: var(--header-button-bgcol);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  height: 50vh;
+  justify-content: flex-start;
+  transition: 0.1s ease-in-out;
+}
+
+.calendar-day:hover {
+  background-color: var(--cal-day-hover-bgcol);
+  box-shadow: 0 0 3px 1px var(--cal-day-hover-border-col);
+}
+
+.calendar-day-label {
+  align-items: baseline;
+  background-color: var(--header-button-bgcol);
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  font-weight: bold;
+  justify-content: space-between;
+  padding: 4px 8px;
+  width: 100%;
+}
+
+.day {
+  color: white;
+  font-size: 1.5vmin;
+}
+
+.date {
+  color: var(--header-logo-col);
+  font-size: 2.25vmin;
+}
+
+@media screen and (orientation: portrait) {
+  #calendar {
+    width: 95vw;
+  }
 }
