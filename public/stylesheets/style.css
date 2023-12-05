@@ -1,8 +1,37 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+:root {
+  --body-bgcol: #dde;
+  --header-bgcol: rgb(168, 180, 215);
+  --header-box-shadow: 0 4px 5px #666;
+  --header-logo-col: rgb(50, 59, 86);
 }
 
-a {
-  color: #00B7FF;
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.gigamajig {
+  font-family: 'ADLaM Display', cursive;
+}
+
+body {
+  background-color: var(--body-bgcol);
+  cursor: default;
+  font-family: sans-serif;
+  overscroll-behavior: none;
+}
+
+header {
+  align-items: center;
+  background-color: var(--header-bgcol);
+  box-shadow: var(--header-box-shadow);
+  display: flex;
+  height: 8vmin;
+  padding: 3vmin;
+}
+
+header > span {
+  color: var(--header-logo-col);
+  font-size: 5vmin;
+  padding-bottom: 1.25vmin;
 }
