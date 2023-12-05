@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
+  isAdmin: Boolean,
   name: String,
   googleId: {
     type: String,

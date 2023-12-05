@@ -1,7 +1,14 @@
+const User = require('../models/user');
+
 module.exports = {
-  index
+  index,
+  show
+};
+
+async function index(req, res) {
+  res.redirect('/users/show');
 }
 
-function index(req, res) {
-  res.render('users/index');
+function show(req, res) {
+  res.render('users/show');
 }

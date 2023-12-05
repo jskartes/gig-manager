@@ -10,6 +10,7 @@ require('./config/database');
 require('./config/passport');
 
 const indexRouter = require('./routes/index');
+const adminRouter = require('./routes/admin');
 const usersRouter = require('./routes/users');
 
 const app = express();
@@ -39,6 +40,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/', indexRouter);
+app.use('/admin', adminRouter);
 app.use('/users', usersRouter);
 
 app.use((req, res, next) => next(createError(404)));
