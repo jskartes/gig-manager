@@ -11,16 +11,11 @@ router.get('/auth/google', passport.authenticate(
 
 router.get('/oauth2callback', passport.authenticate(
   'google',
-  { successRedirect: '/checkuser', failureRedirect: '/' }
+  { successRedirect: '/', failureRedirect: '/' }
 ));
 
 router.get('/logout', (req, res) => {
   req.logout(() => res.redirect('/'));
-});
-
-router.get('/checkuser', (req, res, next) => {
-  if (req.user?.isAdmin) res.redirect('/admin');
-  else res.redirect('/users');
 });
 
 module.exports = router;
