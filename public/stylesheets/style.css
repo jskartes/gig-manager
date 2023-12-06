@@ -80,7 +80,8 @@ header > nav > a {
 form {
   background-color: var(--header-button-bgcol);
   border-radius: 8px;
-  margin-top: 4vmin;
+  margin: 4vmin auto;
+  max-width: 70vmin;
   padding: 1vmin 2vmin;
 }
 

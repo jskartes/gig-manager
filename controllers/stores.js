@@ -7,7 +7,8 @@ module.exports = {
 }
 
 function newStore(req, res) {
-  res.render('stores/new');
+  if (res.locals.user) return res.render('stores/new');
+  res.redirect('/auth/google');
 }
 
 async function create(req, res) {
