@@ -122,12 +122,70 @@ form > button:hover {
 main {
   color: var(--header-logo-col);
   height: 92vmin;
-  padding: 4vmin 12vmin;
+  padding: 4vmin 12vmin 0;
   width: 100vw;
 }
 
 .main-header {
   font-size: 4vmin;
+}
+
+#splash-screen {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+}
+
+#splash-screen > h1 {
+  color: var(--header-button-bgcol);
+  font-size: 12vmin;
+  text-shadow: 0.5vmin -0.5vmin var(--header-logo-col);
+}
+
+#tagline {
+  background-color: var(--header-button-bgcol);
+  border-radius: 85% 50% / 85% 50%;
+  font-size: 3vmin;
+  margin-top: 3vmin;
+  padding: 3vmin 6vmin;
+  transition: 0.25s ease-in-out;
+}
+
+#splash-screen > p {
+  font-size: 2.25vmin;
+  margin-top: 4vmin;
+}
+
+#splash-screen > a {
+  text-decoration: none;
+}
+
+#splash-screen > a > div {
+  background-color: var(--header-button-bgcol);
+  border-radius: 4px;
+  color: white;
+  font-size: 2.25vmin;
+  font-weight: bold;
+  margin-top: 1.5vmin;
+  padding: 0.75vmin 6vmin;
+  transition: 0.1s ease-in-out;
+}
+
+#splash-screen > a > div:hover {
+  background-color: white;
+  color: var(--header-logo-col);
+}
+
+#tagline:hover {
+  border-radius: 50% 85% / 50% 85%;
+}
+
+.owned-by {
+  display: block;
+  font-size: 1.75vmin;
+  margin-top: 0.75vmin;
 }
 
 .store-menu {
@@ -149,7 +207,7 @@ main {
 
 .store-menu > hr {
   border: 0.5px solid var(--header-button-bgcol);
-  margin: 4px 2vmin;
+  margin: 4px 2vmin 0;
 }
 
 .store-menu > a {
@@ -167,6 +225,7 @@ main {
   background-color: var(--header-button-bgcol);
   border-radius: 4px;
   color: white;
+  display: inline-block;
   font-size: 1.75vmin;
   font-weight: bold;
   margin: 2vmin 2vmin 0;

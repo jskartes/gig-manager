@@ -27,6 +27,17 @@ const gigSchema = new mongoose.Schema({
   timestamps: true
 });
 
+const serviceSchema = new mongoose.Schema({
+  serviceName: {
+    type: String,
+    required: true
+  },
+  description: String,
+  price: Number
+}, {
+  timestamps: true
+})
+
 const storeSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -41,6 +52,7 @@ const storeSchema = new mongoose.Schema({
     ref: 'User',
     required: true
   },
+  services: [serviceSchema],
   gigs: [gigSchema]
 }, {
   timestamps: true
