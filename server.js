@@ -10,6 +10,8 @@ require('./config/database');
 require('./config/passport');
 
 const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const storesRouter = require('./routes/stores');
 
 const app = express();
 
@@ -38,6 +40,8 @@ app.use((req, res, next) => {
 });
 
 app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/stores', storesRouter);
 
 app.use((req, res, next) => next(createError(404)));
 

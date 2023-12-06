@@ -1,0 +1,12 @@
+<%- include('../partials/header') %>
+
+<span class='main-header gfont'>Create a store</span>
+<hr/>
+
+<form action='/stores' method='POST'>
+  <label>Your store's name (required):</label>
+  <input name='name' type='text'/>
+  <button type='submit'>Create</button>
+</form>
+
+<%- include('../partials/footer') %>
