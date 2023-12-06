@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=ADLaM+Display&display=swap" rel="stylesheet">
 
   <link rel='stylesheet' href='/stylesheets/style.css'/>
+  <script defer src='/javascripts/script.js' type='text/javascript'></script>
 </head>
 
 <body>
@@ -19,16 +20,14 @@
     <span class='gigamajig'>gigamajig</span>
     <nav>
       <% if (!user) { %>
-        <div class='nav-button'>
-          <a href='/auth/google'>Log in with</a>
-          <a href='/auth/google'>
-            <img id='google-icon' src='https://i.imgur.com/FHjYyi0.png'/>
-          </a>
-        </div>
+        <a class='nav-button' href='/auth/google'><div>
+          Signup / Login
+          <img id='google-icon' src='https://i.imgur.com/FHjYyi0.png'/>
+        </div></a>
       <% } else { %>
-        <div class='nav-button'>
-          <a href='/logout'>Log out</a>
-        </div>
+        <a class='nav-button' href='/logout'><div>
+          Logout
+        </div></a>
       <% } %>
     </nav>
   </header>
