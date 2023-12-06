@@ -34,10 +34,14 @@ header {
   padding: 3vmin;
 }
 
-header > span {
+header > a {
+  text-decoration: none;
+  padding-bottom: 1.25vmin;
+}
+
+header > a > span {
   color: var(--header-logo-col);
   font-size: 5vmin;
-  padding-bottom: 1.25vmin;
 }
 
 header > nav, header > nav > .nav-button > div {

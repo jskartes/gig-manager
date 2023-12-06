@@ -11,6 +11,7 @@ function index(req, res) {
 }
 
 async function show(req, res) {
+  if (!res.locals.user) return res.redirect('/auth/google');
   const stores = await Store.find({ owner: res.locals.user._id });
   res.render('users/show', { stores });
 }

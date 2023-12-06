@@ -1,0 +1,13 @@
+<%- include('../partials/header') %>
+
+<div class='store-menu'>
+  <div class='store-menu-header gfont'>List of service providers</div>
+  <% stores.forEach(store => { %>
+    <a
+      class='owner-store-link'
+      href='/stores/<%= store._id %>'
+    >&rarr;&nbsp;&nbsp;<%= store.name %></a>
+  <% }); %>
+</div>
+
+<%- include('../partials/footer') %>

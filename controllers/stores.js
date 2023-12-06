@@ -1,9 +1,15 @@
 const Store = require('../models/store');
 
 module.exports = {
+  index,
   new: newStore,
   create,
   show
+}
+
+async function index(req, res) {
+  const stores = await Store.find({});
+  res.render('stores/index', { stores });
 }
 
 function newStore(req, res) {
@@ -23,8 +29,5 @@ async function create(req, res) {
 
 async function show(req, res) {
   const store = await Store.findById(req.params.id);
-  res.render('stores/show', {
-    store,
-    owner: res.locals.user.name
-  });
+  res.render('stores/show', { store });
 }
