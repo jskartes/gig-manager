@@ -17,6 +17,16 @@
   <input name='price' type='number' min='0' value='<%= service.price %>'/>
 
   <button type='submit'>Update service</button>
+</div>
 </form>
+
+<div id='delete-button'>
+  <form
+    action='/stores/<%= store._id %>/services/<%= service._id %>?_method=DELETE'
+    method='POST'
+  >
+    <button type='submit'>Delete service</button>
+  </form>
+</div>
 
 <%- include('../partials/footer') %>

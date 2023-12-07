@@ -4,7 +4,8 @@ module.exports = {
   new: newService,
   create,
   edit,
-  update
+  update,
+  delete: deleteService
 }
 
 async function newService(req, res) {
@@ -45,4 +46,15 @@ async function update(req, res) {
     console.log(err);
     res.redirect(`/stores/${store._id}/services/${service._id}/edit`);
   }
+}
+
+async function deleteService(req, res) {
+  const store = await Store.findById(req.params.storeid).populate('services');
+  try {
+    store.services.remove(req.params.serviceid);
+    await store.save();
+  } catch (err) {
+    console.log(err);
+  }
+  res.redirect(`/stores/${store._id}`);
 }

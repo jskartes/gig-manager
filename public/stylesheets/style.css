@@ -56,10 +56,13 @@ header > nav, header > nav > .nav-button > div {
 }
 
 header > nav > span {
+  border: 1px solid var(--header-button-bgcol);
+  border-radius: 4px;
   color: var(--header-logo-col);
   display: inline-block;
   font-size: 2vmin;
-  margin-right: 3vmin;
+  margin-right: 2vmin;
+  padding: 0.5vmin 1.5vmin;
 }
 
 header > nav > .nav-button > div {
@@ -134,7 +137,34 @@ form > button {
   width: 18vmin;
 }
 
-form > button:hover {
+#delete-button {
+  position: relative;
+}
+
+#delete-button > form {
+  background: none;
+  bottom: 5.5vmin;
+  left: 35.5vw;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+}
+
+#delete-button > form > button {
+  background-color: #f88;
+  display: inline-block;
+  font-family: system-ui;
+  margin: 0;
+  text-align: center;
+  transition: 0.1s ease-in-out;
+}
+
+#delete-button > form > button:hover {
+  background-color: white;
+  color: #f88;
+}
+
+form button:hover {
   background-color: white;
   color: var(--header-logo-col);
 }
@@ -298,18 +328,21 @@ main {
 }
 
 .store-menu > .service > .service-description {
-  border-left: 2px solid var(--header-button-bgcol);
+  border-left: 2.5px solid var(--header-button-bgcol);
   display: block;
   font-size: 1.75vmin;
   margin-top: 0.5vmin;
-  padding-left: 1vmin;
+  padding-left: 1.25vmin;
 }
 
 .store-menu > .service > .service-price {
-  display: block;
+  border: 1px solid var(--header-button-bgcol);
+  border-radius: 4px;
+  display: inline-block;
   font-size: 2vmin;
   font-weight: bold;
-  margin-top: 0.5vmin;
+  margin-top: 0.8vmin;
+  padding: 0.3vmin 1vmin;
 }
 
 #calendar {
@@ -359,6 +392,10 @@ main {
 @media screen and (orientation: portrait) {
   main {
     padding: 4vmin 4vmin 0;
+  }
+
+  #delete-button > form {
+    left: 33vmin;
   }
 
   #calendar {
