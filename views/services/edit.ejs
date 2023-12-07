@@ -1,0 +1,22 @@
+<%- include('../partials/header') %>
+
+<span class='main-header gfont'><%= service.name %> &mdash; Edit service</span>
+<hr/>
+
+<form
+  action='/stores/<%= store._id %>/services/<%= service._id %>?_method=PUT' 
+  method='POST'
+>
+  <label>Service name (required):</label>
+  <input name='name' type='text' value='<%= service.name %>'/>
+
+  <label>Description:</label>
+  <textarea name='description' rows='3'><%= service.description %></textarea>
+
+  <label>Price:</label>
+  <input name='price' type='number' min='0' value='<%= service.price %>'/>
+
+  <button type='submit'>Update service</button>
+</form>
+
+<%- include('../partials/footer') %>
