@@ -35,6 +35,6 @@ async function show(req, res) {
 }
 
 async function showCalendar(req, res) {
-  const store = Store.findById(req.params.id);
+  const store = await Store.findById(req.params.id);
   res.render('stores/calendar', { store });
 }
