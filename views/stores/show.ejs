@@ -34,33 +34,34 @@
   <% } %>
 </div>
 
-<div class='store-menu'>
-  <% if (userIsAdmin) { %>
-    <div class='store-menu-header gfont'>Admin actions</div>
-    <a
-      class='store-link'
-      href='/stores/<%= store._id %>/calendar'
-    >&rarr;&nbsp;&nbsp;Edit store calendar</a>
-    <a
-      class='store-link'
-      href='/stores/<%= store._id %>/confirm-delete'
-      style='color: red; font-weight: bold'
-    >&rarr;&nbsp;&nbsp;Delete store</a>
-  <% } %>
-  <% if (user && !userIsAdmin) { %>
-    <div class='store-menu-header gfont'>Client actions</div>
-    <% if (store.services.length) { %>
+<% if (user) { %>
+  <div class='store-menu'>
+    <% if (userIsAdmin) { %>
+      <div class='store-menu-header gfont'>Admin actions</div>
       <a
         class='store-link'
         href='/stores/<%= store._id %>/calendar'
-      >&rarr;&nbsp;&nbsp;Book a service</a>
-      <hr/>
+      >&rarr;&nbsp;&nbsp;Edit store calendar</a>
+      <a
+        class='store-link'
+        href='/stores/<%= store._id %>/confirm-delete'
+        style='color: red; font-weight: bold'
+      >&rarr;&nbsp;&nbsp;Delete store</a>
+    <% } else { %>
+      <div class='store-menu-header gfont'>Client actions</div>
+      <% if (store.services.length) { %>
+        <a
+          class='store-link'
+          href='/stores/<%= store._id %>/calendar'
+        >&rarr;&nbsp;&nbsp;Book a service</a>
+        <hr/>
+      <% } %>
+      <a
+        class='store-link'
+        href='#'
+      >&rarr;&nbsp;&nbsp;Contact service provider</a>
     <% } %>
-    <a
-      class='store-link'
-      href='#'
-    >&rarr;&nbsp;&nbsp;Contact service provider</a>
-  <% } %>
-</div>
+  </div>
+<% } %>
 
 <%- include('../partials/footer') %>
