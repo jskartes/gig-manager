@@ -28,12 +28,15 @@ const gigSchema = new mongoose.Schema({
 });
 
 const serviceSchema = new mongoose.Schema({
-  serviceName: {
+  name: {
     type: String,
     required: true
   },
   description: String,
-  price: Number
+  price: {
+    type: Number,
+    default: 0
+  }
 }, {
   timestamps: true
 })

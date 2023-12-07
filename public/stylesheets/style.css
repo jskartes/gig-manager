@@ -64,10 +64,6 @@ header > nav > .nav-button > div {
   transition: 0.1s ease-in-out;
 }
 
-/* header > nav > .nav-button > div:last-child {
-  margin-right: 0;
-} */
-
 header > nav > .nav-button > div:hover {
   background-color: white;
   color: var(--header-logo-col);
@@ -102,13 +98,19 @@ form > label {
   margin-bottom: 1vmin;
 }
 
-form > input {
+form > input, form > textarea {
   border: none;
   border-radius: 4px;
   display: block;
+  font-family: sans-serif;
   font-size: 2vmin;
+  margin-bottom: 2vmin;
   padding: 3px 8px;
   width: 100%;
+}
+
+form > input:last-of-type {
+  margin-bottom: 1vmin;
 }
 
 form > button {
@@ -226,7 +228,7 @@ main {
   text-decoration: none;
 }
 
-.owner-store-link {
+.store-link {
   display: block;
   margin-left: 2vmin;
   margin-top: 1vmin;
@@ -249,6 +251,58 @@ main {
 .store-menu > a > div:hover {
   background-color: white;
   color: var(--header-logo-col);
+}
+
+.store-menu > .service {
+  background-color: var(--header-button-bgcol);
+  border-radius: 4px;
+  margin: 1vmin;
+  padding: 1vmin 2vmin;
+}
+
+.store-menu > .service > .service-name {
+  display: flex;
+  justify-content: space-between;
+}
+
+.store-menu > .service > .service-name > span {
+  font-size: 2.25vmin;
+  font-weight: bold;
+}
+
+.store-menu > .service > .service-name > a {
+  text-decoration: none;
+}
+
+.store-menu > .service > .service-name > a > div {
+  background-color: var(--header-button-bgcol);
+  border-radius: 4px;
+  color: white;
+  font-size: 1.75vmin;
+  font-weight: bold;
+  text-align: center;
+  transition: 0.1s ease-in-out;
+  width: 8vmin;
+}
+
+.store-menu > .service > .service-name > a > div:hover {
+  background-color: white;
+  color: var(--header-logo-col);
+}
+
+.store-menu > .service > .service-description {
+  border-left: 2px solid var(--header-button-bgcol);
+  display: block;
+  font-size: 1.75vmin;
+  margin-top: 0.5vmin;
+  padding-left: 1vmin;
+}
+
+.store-menu > .service > .service-price {
+  display: block;
+  font-size: 2vmin;
+  font-weight: bold;
+  margin-top: 0.5vmin;
 }
 
 #calendar {

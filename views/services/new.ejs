@@ -1,0 +1,19 @@
+<%- include('../partials/header') %>
+
+<span class='main-header gfont'><%= store.name %> &mdash; Add a service</span>
+<hr/>
+
+<form action='/stores/<%= store._id %>/services' method='POST'>
+  <label>Service name (required):</label>
+  <input name='name' type='text'/>
+
+  <label>Description:</label>
+  <textarea name='description' rows='3'></textarea>
+
+  <label>Price:</label>
+  <input name='price' type='number' min='0'/>
+
+  <button type='submit'>Add service</button>
+</form>
+
+<%- include('../partials/footer') %>

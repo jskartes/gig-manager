@@ -5,7 +5,22 @@
 
 <div class='store-menu'>
   <div class='store-menu-header gfont'>Available services</div>
-
+  <% store.services.forEach(service => { %>
+    <div class='service'>
+      <div class='service-name'>
+        <span><%= service.name %></span>
+        <% if (userIsAdmin) { %>
+          <a href='/stores/<%= store._id %>/services/<%= service._id %>/edit'>
+            <div>Edit</div>
+          </a>
+        <% } %>
+      </div>
+      <% if (service.description) { %>
+        <span class='service-description'><%= service.description %></span>
+      <% } %>
+      <span class='service-price'>$<%= service.price %></span>
+    </div>
+  <% }); %>
   <% if (userIsAdmin) { %>
     <a href='/stores/<%= store._id %>/services/new'><div>
       Add a service
@@ -18,13 +33,13 @@
     <div class='store-menu-header gfont'>Client actions</div>
     <% if (store.services.length) { %>
       <a
-        class='owner-store-link'
+        class='store-link'
         href='#'
       >&rarr;&nbsp;&nbsp;Book a service</a>
       <hr/>
     <% } %>
     <a
-      class='owner-store-link'
+      class='store-link'
       href='#'
     >&rarr;&nbsp;&nbsp;Contact service provider</a>
   <% } %>

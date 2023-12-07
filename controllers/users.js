@@ -7,6 +7,7 @@ module.exports = {
 }
 
 function index(req, res) {
+  if (!res.locals.user) return res.redirect('/auth/google');
   res.redirect(`/users/${res.locals.user._id}`);
 }
 
