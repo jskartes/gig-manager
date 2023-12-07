@@ -25,6 +25,12 @@
           <img id='google-icon' src='https://i.imgur.com/FHjYyi0.png'/>
         </div></a>
       <% } else { %>
+        <a 
+          class='nav-button'
+          href='/users/<%= user._id %>'
+        ><div>
+          Your dashboard
+        </div></a>
         <a class='nav-button' href='/logout'><div>
           Logout
         </div></a>

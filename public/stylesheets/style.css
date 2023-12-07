@@ -32,6 +32,7 @@ header {
   height: 8vmin;
   justify-content: space-between;
   padding: 3vmin;
+  padding-right: 1vmin;
 }
 
 header > a {
@@ -42,6 +43,11 @@ header > a {
 header > a > span {
   color: var(--header-logo-col);
   font-size: 5vmin;
+  transition: 0.15s ease-in-out;
+}
+
+header > a > span:hover {
+  color: var(--body-bgcol);
 }
 
 header > nav, header > nav > .nav-button > div {
@@ -58,9 +64,9 @@ header > nav > .nav-button > div {
   transition: 0.1s ease-in-out;
 }
 
-header > nav > .nav-button > div:last-child {
+/* header > nav > .nav-button > div:last-child {
   margin-right: 0;
-}
+} */
 
 header > nav > .nav-button > div:hover {
   background-color: white;

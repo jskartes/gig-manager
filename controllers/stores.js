@@ -29,5 +29,6 @@ async function create(req, res) {
 
 async function show(req, res) {
   const store = await Store.findById(req.params.id);
-  res.render('stores/show', { store });
+  const userIsAdmin = store.owner.equals(res.locals.user?._id);
+  res.render('stores/show', { store, userIsAdmin });
 }
