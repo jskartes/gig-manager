@@ -55,6 +55,13 @@ header > nav, header > nav > .nav-button > div {
   display: flex;
 }
 
+header > nav > span {
+  color: var(--header-logo-col);
+  display: inline-block;
+  font-size: 2vmin;
+  margin-right: 3vmin;
+}
+
 header > nav > .nav-button > div {
   background-color: var(--header-button-bgcol);
   border-radius: 6px;
@@ -350,7 +357,16 @@ main {
 }
 
 @media screen and (orientation: portrait) {
+  main {
+    padding: 4vmin 4vmin 0;
+  }
+
   #calendar {
-    width: 95vw;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(7, 1fr);
+  }
+
+  .calendar-day {
+    height: 10vh;
   }
 }

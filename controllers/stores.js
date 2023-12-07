@@ -4,7 +4,8 @@ module.exports = {
   index,
   new: newStore,
   create,
-  show
+  show,
+  showCalendar
 }
 
 async function index(req, res) {
@@ -31,4 +32,9 @@ async function show(req, res) {
   const store = await Store.findById(req.params.id);
   const userIsAdmin = store.owner.equals(res.locals.user?._id);
   res.render('stores/show', { store, userIsAdmin });
+}
+
+async function showCalendar(req, res) {
+  const store = Store.findById(req.params.id);
+  res.render('stores/calendar', { store });
 }
