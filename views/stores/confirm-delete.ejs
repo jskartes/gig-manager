@@ -1,0 +1,28 @@
+<%- include('../partials/header') %>
+
+<span class='main-header gfont'><%= store.name %> &mdash; Delete store</span>
+<hr/>
+
+<form
+  action='/stores/<%= store._id %>?_method=DELETE'
+  method='POST'
+  style='background-color: #f88'
+>
+  <label style='font-weight: bold'>Are you sure?</label>
+  <p>Confirming will result in <em>permanent</em> deletion.</p>
+  <p>Your store will not be retrievable, and all information will be lost.</p>
+  
+  <label>Type your store name to confirm:</label>
+  <input name='name' type='text' required/>
+
+  <button type='submit'>Delete store</button>
+</form>
+
+<% if (deleteError) { %>
+  <div style='width: 100%; text-align: center; color: red'>
+    <p><strong>Did not match store name.</strong></p>
+    <p>If you still want to delete, try again.</p>
+  </div>
+<% } %>
+
+<%- include('../partials/footer') %>

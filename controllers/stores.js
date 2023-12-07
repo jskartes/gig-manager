@@ -5,7 +5,9 @@ module.exports = {
   new: newStore,
   create,
   show,
-  showCalendar
+  showCalendar,
+  confirmDelete,
+  delete: deleteStore
 }
 
 async function index(req, res) {
@@ -37,4 +39,32 @@ async function show(req, res) {
 async function showCalendar(req, res) {
   const store = await Store.findById(req.params.id);
   res.render('stores/calendar', { store });
+}
+
+async function confirmDelete(req, res) {
+  const store = await Store.findById(req.params.id);
+  if (store.owner.equals(res.locals.user?._id)) {
+    res.render('stores/confirm-delete', {
+      store,
+      deleteError: false
+    });
+  }
+}
+
+async function deleteStore(req, res) {
+  const store = await Store.findById(req.params.id);
+  if (req.body.name === store.name) {
+    try {
+      await Store.deleteOne({ _id: req.params.id });
+      res.redirect(`/users/${res.locals.user._id}`);
+    } catch (err) {
+      console.log(err);
+      res.redirect(`/stores/${store._id}`);
+    }
+  } else {
+    res.render('stores/confirm-delete', {
+      store,
+      deleteError: true
+    });
+  }
 }
