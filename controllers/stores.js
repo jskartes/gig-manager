@@ -1,4 +1,5 @@
 const Store = require('../models/store');
+const User = require('../models/user');
 
 module.exports = {
   index,
@@ -41,7 +42,15 @@ async function show(req, res) {
 }
 
 async function showCalendar(req, res) {
+  if (!res.locals.user) return res.redirect('/auth/google');
   const store = await Store.findById(req.params.id);
+  await res.locals.user.populate({
+    path: 'availableTimes',
+    populate: {
+      path: 'forStores',
+      model: 'Store'
+    }
+  });
   const months = {
     'Jan': 1,  'Feb': 2,  'Mar': 3,  'Apr': 4,
     'May': 5,  'Jun': 6,  'Jul': 7,  'Aug': 8,
@@ -62,7 +71,11 @@ async function showCalendar(req, res) {
   res.render('stores/calendar', {
     store,
     days,
-    week: parseInt(req.query.week)
+    week: parseInt(req.query.week),
+    timeFormat: new Intl.DateTimeFormat('en', {
+      timeStyle: 'short'
+    }),
+    dateFormat: { month: 'numeric', day: 'numeric' }
   });
 }
 
