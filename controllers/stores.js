@@ -54,10 +54,6 @@ async function showCalendar(req, res) {
       }
     }
   });
-
-          /*----- DEBUG -----*/
-          console.log(store);
-  
   const months = {
     'Jan': 1,  'Feb': 2,  'Mar': 3,  'Apr': 4,
     'May': 5,  'Jun': 6,  'Jul': 7,  'Aug': 8,
