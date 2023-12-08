@@ -1,5 +1,22 @@
 const mongoose = require('mongoose');
 
+const availableTimeSchema = new mongoose.Schema({
+  startTime: {
+    type: Date,
+    required: true
+  },
+  endTime: {
+    type: Date,
+    required: true
+  },
+  forStores: {
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: 'Store'
+  }
+}, {
+  timestamps: true
+});
+
 const userSchema = new mongoose.Schema({
   googleId: {
     type: String,
@@ -7,6 +24,7 @@ const userSchema = new mongoose.Schema({
   },
   name: String,
   email: String,
+  availableTimes: [availableTimeSchema],
   stores: {
     type: [mongoose.Schema.Types.ObjectId],
     ref: 'Store'

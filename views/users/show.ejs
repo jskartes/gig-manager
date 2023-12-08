@@ -4,7 +4,7 @@
 <hr/>
 
 <div class='store-menu'>
-  <div class='store-menu-header gfont'>Stores you manage:</div>
+  <div class='store-menu-header gfont'>Stores you manage</div>
   <% stores.forEach(store => { %>
     <a
       class='store-link'
@@ -18,11 +18,25 @@
 </div>
 
 <div class='store-menu'>
-  <div class='store-menu-header gfont'>Service providers you hire:</div>
+  <div class='store-menu-header gfont'>Service providers you hire</div>
 
   <a href='/stores'><div>
     Browse stores
   </div></a>
+</div>
+
+<div class='store-menu'>
+  <div class='store-menu-header gfont'>Admin actions</div>
+  <a
+    class='store-link'
+    href='/users/<%= user._id %>/calendar?week=0'
+  >&rarr;&nbsp;&nbsp;Manage your available work times</a>
+  <a
+    class='store-link'
+    href='/users/<%= user._id %>/confirm-delete'
+    style='color: red; font-weight: bold'
+  >&rarr;&nbsp;&nbsp;Delete your user account</a>
+
 </div>
 
 <%- include('../partials/footer') %>
