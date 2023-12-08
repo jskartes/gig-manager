@@ -4,49 +4,49 @@
 <hr/>
 
 <section id='calendar'>
-  <div class='calendar-day'>
+  <div id='<%= days[0].month %>-<%= days[0].date %>' class='calendar-day'>
     <div class='calendar-day-label'>
       <span class='day'><%= days[0].day %></span>
       <span class='date'><%= days[0].month %>/<%= days[0].date %></span>
     </div>
   </div>
 
-  <div class='calendar-day'>
+  <div id='<%= days[1].month %>-<%= days[1].date %>' class='calendar-day'>
     <div class='calendar-day-label'>
       <span class='day'><%= days[1].day %></span>
       <span class='date'><%= days[1].month %>/<%= days[1].date %></span>
     </div>
   </div>
 
-  <div class='calendar-day'>
+  <div id='<%= days[2].month %>-<%= days[2].date %>' class='calendar-day'>
     <div class='calendar-day-label'>
       <span class='day'><%= days[2].day %></span>
       <span class='date'><%= days[2].month %>/<%= days[2].date %></span>
     </div>
   </div>
 
-  <div class='calendar-day'>
+  <div id='<%= days[3].month %>-<%= days[3].date %>' class='calendar-day'>
     <div class='calendar-day-label'>
       <span class='day'><%= days[3].day %></span>
       <span class='date'><%= days[3].month %>/<%= days[3].date %></span>
     </div>
   </div>
 
-  <div class='calendar-day'>
+  <div id='<%= days[4].month %>-<%= days[4].date %>' class='calendar-day'>
     <div class='calendar-day-label'>
       <span class='day'><%= days[4].day %></span>
       <span class='date'><%= days[4].month %>/<%= days[4].date %></span>
     </div>
   </div>
 
-  <div class='calendar-day'>
+  <div id='<%= days[5].month %>-<%= days[5].date %>' class='calendar-day'>
     <div class='calendar-day-label'>
       <span class='day'><%= days[5].day %></span>
       <span class='date'><%= days[5].month %>/<%= days[5].date %></span>
     </div>
   </div>
 
-  <div class='calendar-day'>
+  <div id='<%= days[6].month %>-<%= days[6].date %>' class='calendar-day'>
     <div class='calendar-day-label'>
       <span class='day'><%= days[6].day %></span>
       <span class='date'><%= days[6].month %>/<%= days[6].date %></span>
@@ -76,7 +76,25 @@
 </section>
 
 <section id='calendar-input-panel'>
+  <form
+    action='/users/<%= user._id %>/available?week=<%= week %>' 
+    method='POST'
+  >
+    <label>Available start time:</label>
+    <input name='startTime' type='datetime-local'/>
+    
+    <label>Available end time:</label>
+    <input name='endTime' type='datetime-local'/>
 
+    <label>Apply to stores:</label>
+    <select name='forStores' multiple>
+      <% stores.forEach(store => { %>
+        <option value='<%= store.name %>'><%= store.name %></option>
+      <% }); %>
+    </select>
+
+    <button type='submit'>Add availability</button>
+  </form>
 </section>
 
 <%- include('../partials/footer') %>

@@ -112,7 +112,7 @@ form > label {
   margin-bottom: 1vmin;
 }
 
-form > input, form > textarea {
+form > input, form > textarea, form > select {
   border: none;
   border-radius: 4px;
   display: block;
@@ -457,6 +457,10 @@ main {
 
 #calendar-input-panel {
 
+}
+
+#calendar-input-panel > form > select {
+  width: 100%;
 }
 
 @media screen and (orientation: portrait) {

@@ -5,6 +5,7 @@ module.exports = {
   index,
   show,
   showCalendar,
+  addAvailableTime,
   confirmDelete,
   delete: deleteUserAccount
 }
@@ -20,7 +21,8 @@ async function show(req, res) {
   res.render('users/show', { stores });
 }
 
-function showCalendar(req, res) {
+async function showCalendar(req, res) {
+  const stores = await Store.find({ owner: res.locals.user._id });
   const months = {
     'Jan': 1,  'Feb': 2,  'Mar': 3,  'Apr': 4,
     'May': 5,  'Jun': 6,  'Jul': 7,  'Aug': 8,
@@ -40,9 +42,32 @@ function showCalendar(req, res) {
   }
   res.render('users/calendar', {
     user: res.locals.user,
+    stores,
     days,
     week: parseInt(req.query.week)
   });
+}
+
+async function addAvailableTime(req, res) {
+  const user = await User.findById(req.params.id);
+  const stores = await Store.find({ owner: res.locals.user._id });
+  const forStores = req.body.forStores.map(forStore => {
+    return stores.find(store => store.name === forStore);
+  });
+  user.availableTimes.push({
+    startTime: req.body.startTime,
+    endTime: req.body.endTime,
+    forStores: forStores
+  });
+  try {
+    await user.save();
+    res.redirect(
+      `/users/${res.locals.user._id}/calendar?week=${parseInt(req.query.week)}`
+    );
+  } catch (err) {
+    console.log(err);
+    res.redirect(`/users/${res.locals.user._id}/calendar?week=0`);
+  }
 }
 
 function confirmDelete(req, res) {
