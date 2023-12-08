@@ -1,8 +1,8 @@
 :root {
   --body-bgcol: #dde;
   --button-hover-bgcol: white;
-  --cal-day-hover-bgcol: rgba(255, 69, 0, 0.05);
-  --cal-day-hover-border-col: orange;
+  --cal-button-hover-bgcol: rgba(255, 69, 0, 0.05);
+  --cal-button-hover-border-col: orange;
   --header-bgcol: rgb(168, 180, 215);
   --header-box-shadow: 0 4px 5px #666;
   --main-text-col: rgb(50, 59, 86);
@@ -370,6 +370,7 @@ main {
   display: grid;
   gap: 6px;
   grid-template-columns: repeat(7, 1fr);
+  height: 30vh;
   margin: 4vmin auto 6px;
   width: 80vw;
 }
@@ -379,15 +380,8 @@ main {
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  height: 35vh;
   justify-content: flex-start;
   overflow-y: scroll;
-  transition: 0.1s ease-in-out;
-}
-
-.calendar-day:hover {
-  background-color: var(--cal-day-hover-bgcol);
-  box-shadow: 0 0 3px 1px var(--cal-day-hover-border-col);
 }
 
 .calendar-day-label {
@@ -410,11 +404,27 @@ main {
   font-size: 2.25vmin;
 }
 
-#calendar > .calendar-day > .timeslot {
+#calendar .timeslot {
   background-color: var(--transparent-overlay);
   border-radius: 4px;
+  font-size: 1.5vmin;
   margin: 6px 6px 0;
   padding: 6px;
+}
+
+#calendar .timeslot > .timeslot-time {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.35vmin;
+}
+
+#calendar .timeslot > .timeslot-stores-list {
+  border-left: 2.5px solid var(--transparent-overlay);
+  padding-left: 0.5vmin;
+}
+
+#calendar .timeslot > .timeslot-stores-list > .timeslot-store {
+  display: block;
 }
 
 #calendar-week-controls {
@@ -448,8 +458,7 @@ main {
 }
 
 #calendar-week-controls > a > div:hover {
-  background-color: var(--cal-day-hover-bgcol);
-  box-shadow: 0 0 3px 1px var(--cal-day-hover-border-col);
+  background-color: var(--button-hover-bgcol);
 }
 
 #calendar-week-controls > a > .inactive-button {

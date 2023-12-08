@@ -22,6 +22,14 @@ async function show(req, res) {
 }
 
 async function showCalendar(req, res) {
+  if (!res.locals.user) return res.redirect('/auth/google');
+  const user = await User.findById(req.params.id).populate({
+    path: 'availableTimes',
+    populate: {
+      path: 'forStores',
+      model: 'Store'
+    }
+  });
   const stores = await Store.find({ owner: res.locals.user._id });
   const months = {
     'Jan': 1,  'Feb': 2,  'Mar': 3,  'Apr': 4,
@@ -41,10 +49,14 @@ async function showCalendar(req, res) {
     });
   }
   res.render('users/calendar', {
-    user: res.locals.user,
+    user,
     stores,
     days,
-    week: parseInt(req.query.week)
+    week: parseInt(req.query.week),
+    timeFormat: new Intl.DateTimeFormat('en', {
+      timeStyle: 'short'
+    }),
+    dateFormat: { month: 'numeric', day: 'numeric' }
   });
 }
 
