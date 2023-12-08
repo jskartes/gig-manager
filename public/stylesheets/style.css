@@ -1,11 +1,15 @@
 :root {
   --body-bgcol: #dde;
+  --button-hover-bgcol: white;
   --cal-day-hover-bgcol: rgba(255, 69, 0, 0.05);
   --cal-day-hover-border-col: orange;
   --header-bgcol: rgb(168, 180, 215);
   --header-box-shadow: 0 4px 5px #666;
-  --header-button-bgcol: rgba(50, 59, 86, 0.15);
-  --header-logo-col: rgb(50, 59, 86);
+  --main-text-col: rgb(50, 59, 86);
+  --text-accent-col: white;
+  --transparent-overlay: rgba(50, 59, 86, 0.15);
+  --warning-col: #f88;
+  --warning-text-col: rgb(86, 50, 50);
 }
 
 * {
@@ -41,7 +45,7 @@ header > a {
 }
 
 header > a > span {
-  color: var(--header-logo-col);
+  color: var(--main-text-col);
   font-size: 5vmin;
   transition: 0.15s ease-in-out;
 }
@@ -56,9 +60,9 @@ header > nav, header > nav > .nav-button > div {
 }
 
 header > nav > span {
-  border: 0.5px solid var(--body-bgcol);
+  border: 2px double var(--body-bgcol);
   border-radius: 4px;
-  color: white;
+  color: var(--text-accent-col);
   display: inline-block;
   font-size: 2vmin;
   margin-right: 2vmin;
@@ -66,7 +70,7 @@ header > nav > span {
 }
 
 header > nav > .nav-button > div {
-  background-color: var(--header-button-bgcol);
+  background-color: var(--transparent-overlay);
   border-radius: 6px;
   height: 4.5vmin;
   margin-right: 2vmin;
@@ -75,12 +79,12 @@ header > nav > .nav-button > div {
 }
 
 header > nav > .nav-button > div:hover {
-  background-color: white;
-  color: var(--header-logo-col);
+  background-color: var(--button-hover-bgcol);
+  color: var(--main-text-col);
 }
 
 header > nav > a {
-  color: white;
+  color: var(--text-accent-col);
   font-size: 1.85vmin;
   font-weight: bold;
   text-decoration: none;
@@ -94,7 +98,7 @@ header > nav > a {
 }
 
 form {
-  background-color: var(--header-button-bgcol);
+  background-color: var(--transparent-overlay);
   border-radius: 8px;
   margin: 4vmin auto;
   max-width: 70vmin;
@@ -120,10 +124,10 @@ form > input, form > textarea {
 }
 
 form > button {
-  background-color: var(--header-button-bgcol);
+  background-color: var(--transparent-overlay);
   border: none;
   border-radius: 4px;
-  color: white;
+  color: var(--text-accent-col);
   cursor: pointer;
   font-size: 1.75vmin;
   font-weight: bold;
@@ -131,6 +135,20 @@ form > button {
   padding: 3px 6px;
   transition: 0.1s ease-in-out;
   width: 18vmin;
+}
+
+form.warning-form {
+  background-color: var(--warning-col);
+}
+
+form > .warning-text {
+  color: var(--warning-text-col);
+}
+
+.error-text {
+  color: var(--warning-text-col);
+  text-align: center;
+  width: 100%;
 }
 
 #delete-button {
@@ -147,7 +165,7 @@ form > button {
 }
 
 #delete-button > form > button {
-  background-color: #f88;
+  background-color: var(--warning-col);
   display: inline-block;
   font-family: system-ui;
   margin: 0;
@@ -156,17 +174,17 @@ form > button {
 }
 
 #delete-button > form > button:hover {
-  background-color: white;
-  color: #f88;
+  background-color: var(--button-hover-bgcol);
+  color: var(--warning-col);
 }
 
 form button:hover {
-  background-color: white;
-  color: var(--header-logo-col);
+  background-color: var(--button-hover-bgcol);
+  color: var(--main-text-col);
 }
 
 main {
-  color: var(--header-logo-col);
+  color: var(--main-text-col);
   height: 92vmin;
   padding: 4vmin 12vmin 0;
   width: 100vw;
@@ -185,14 +203,14 @@ main {
 }
 
 #splash-screen > h1 {
-  color: var(--header-button-bgcol);
+  color: var(--transparent-overlay);
   font-size: 12vmin;
   font-weight: normal;
-  text-shadow: 0.5vmin -0.5vmin var(--header-logo-col);
+  text-shadow: 0.5vmin -0.5vmin var(--main-text-col);
 }
 
 #tagline {
-  background-color: var(--header-button-bgcol);
+  background-color: var(--transparent-overlay);
   border-radius: 85% 50% / 85% 50%;
   font-size: 3vmin;
   margin-top: 3vmin;
@@ -210,9 +228,9 @@ main {
 }
 
 #splash-screen > a > div {
-  background-color: var(--header-button-bgcol);
+  background-color: var(--transparent-overlay);
   border-radius: 4px;
-  color: white;
+  color: var(--text-accent-col);
   font-size: 2.25vmin;
   font-weight: bold;
   margin-top: 1.5vmin;
@@ -221,8 +239,8 @@ main {
 }
 
 #splash-screen > a > div:hover {
-  background-color: white;
-  color: var(--header-logo-col);
+  background-color: var(--button-hover-bgcol);
+  color: var(--main-text-col);
 }
 
 #tagline:hover {
@@ -236,7 +254,7 @@ main {
 }
 
 .store-menu {
-  background-color: var(--header-button-bgcol);
+  background-color: var(--transparent-overlay);
   border-radius: 8px;
   margin-top: 4vmin;
   padding-bottom: 1vmin;
@@ -244,7 +262,7 @@ main {
 
 .store-menu-header {
   align-items: center;
-  background-color: var(--header-button-bgcol);
+  background-color: var(--transparent-overlay);
   border-radius: 8px 8px 0 0;
   display: flex;
   font-size: 2vmin;
@@ -253,19 +271,19 @@ main {
 }
 
 .store-menu > hr {
-  border: 0.5px solid var(--header-button-bgcol);
+  border: 0.5px solid var(--transparent-overlay);
   margin: 4px 2vmin 0;
 }
 
 .store-menu > a {
-  color: var(--header-logo-col);
+  color: var(--main-text-col);
   font-size: 2vmin;
   text-decoration: none;
   transition: 0.1s ease-in-out;
 }
 
 .store-menu > a:hover {
-  color: white;
+  color: var(--button-hover-bgcol);
 }
 
 .store-link {
@@ -275,9 +293,9 @@ main {
 }
 
 .store-menu > a > div {
-  background-color: var(--header-button-bgcol);
+  background-color: var(--transparent-overlay);
   border-radius: 4px;
-  color: white;
+  color: var(--text-accent-col);
   display: inline-block;
   font-size: 1.75vmin;
   font-weight: bold;
@@ -289,12 +307,12 @@ main {
 }
 
 .store-menu > a > div:hover {
-  background-color: white;
-  color: var(--header-logo-col);
+  background-color: var(--button-hover-bgcol);
+  color: var(--main-text-col);
 }
 
 .store-menu > .service {
-  background-color: var(--header-button-bgcol);
+  background-color: var(--transparent-overlay);
   border-radius: 4px;
   margin: 1vmin;
   padding: 1vmin 2vmin;
@@ -315,9 +333,9 @@ main {
 }
 
 .store-menu > .service > .service-name > a > div {
-  background-color: var(--header-button-bgcol);
+  background-color: var(--transparent-overlay);
   border-radius: 4px;
-  color: white;
+  color: var(--text-accent-col);
   font-size: 1.75vmin;
   font-weight: bold;
   text-align: center;
@@ -326,12 +344,12 @@ main {
 }
 
 .store-menu > .service > .service-name > a > div:hover {
-  background-color: white;
-  color: var(--header-logo-col);
+  background-color: var(--button-hover-bgcol);
+  color: var(--main-text-col);
 }
 
 .store-menu > .service > .service-description {
-  border-left: 2.5px solid var(--header-button-bgcol);
+  border-left: 2.5px solid var(--transparent-overlay);
   display: block;
   font-size: 1.75vmin;
   margin-top: 0.5vmin;
@@ -339,7 +357,7 @@ main {
 }
 
 .store-menu > .service > .service-price {
-  border: 1px solid var(--header-button-bgcol);
+  border: 1px solid var(--transparent-overlay);
   border-radius: 4px;
   display: inline-block;
   font-size: 2vmin;
@@ -357,11 +375,11 @@ main {
 }
 
 .calendar-day {
-  background-color: var(--header-button-bgcol);
+  background-color: var(--transparent-overlay);
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  height: 40vh;
+  height: 35vh;
   justify-content: flex-start;
   transition: 0.1s ease-in-out;
 }
@@ -373,7 +391,7 @@ main {
 
 .calendar-day-label {
   align-items: baseline;
-  background-color: var(--header-button-bgcol);
+  background-color: var(--transparent-overlay);
   border-radius: 8px 8px 0 0;
   display: flex;
   font-weight: bold;
@@ -383,16 +401,16 @@ main {
 }
 
 .day {
-  color: white;
+  color: var(--text-accent-col);
   font-size: 1.5vmin;
 }
 
 .date {
-  color: var(--header-logo-col);
+  color: var(--main-text-col);
   font-size: 2.25vmin;
 }
 
-#week-controls {
+#calendar-week-controls {
   display: grid;
   gap: 6px;
   grid-template-columns: repeat(3, 1fr);
@@ -400,41 +418,45 @@ main {
   width: 80vw;
 }
 
-#week-controls > a {
+#calendar-week-controls > a {
   text-decoration: none;
 }
 
-#week-controls > a > div {
-  background-color: var(--header-button-bgcol);
+#calendar-week-controls > a > div {
+  background-color: var(--transparent-overlay);
   border-radius: 8px;
-  color: var(--header-logo-col);
+  color: var(--main-text-col);
   font-size: 1.75vmin;
   font-weight: bold;
   padding: 6px 8px;
   transition: 0.1s ease-in-out;
 }
 
-#week-controls > a:nth-of-type(2) {
+#calendar-week-controls > a:nth-of-type(2) {
   text-align: center;
 }
 
-#week-controls > a:last-of-type {
+#calendar-week-controls > a:last-of-type {
   text-align: right;
 }
 
-#week-controls > a > div:hover {
+#calendar-week-controls > a > div:hover {
   background-color: var(--cal-day-hover-bgcol);
   box-shadow: 0 0 3px 1px var(--cal-day-hover-border-col);
 }
 
-#week-controls > a > .inactive-button {
-  color: var(--header-button-bgcol);
+#calendar-week-controls > a > .inactive-button {
+  color: var(--transparent-overlay);
   cursor: default;
 }
 
-#week-controls > a > .inactive-button:hover {
-  background-color: var(--header-button-bgcol);
+#calendar-week-controls > a > .inactive-button:hover {
+  background-color: var(--transparent-overlay);
   box-shadow: unset;
+}
+
+#calendar-input-panel {
+
 }
 
 @media screen and (orientation: portrait) {
