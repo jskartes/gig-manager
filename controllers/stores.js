@@ -43,14 +43,21 @@ async function show(req, res) {
 
 async function showCalendar(req, res) {
   if (!res.locals.user) return res.redirect('/auth/google');
-  const store = await Store.findById(req.params.id);
-  await res.locals.user.populate({
-    path: 'availableTimes',
+  const store = await Store.findById(req.params.id).populate({
+    path: 'owner',
+    model: 'User',
     populate: {
-      path: 'forStores',
-      model: 'Store'
+      path: 'availableTimes',
+      populate: {
+        path: 'forStores',
+        model: 'Store'
+      }
     }
   });
+
+          /*----- DEBUG -----*/
+          console.log(store);
+  
   const months = {
     'Jan': 1,  'Feb': 2,  'Mar': 3,  'Apr': 4,
     'May': 5,  'Jun': 6,  'Jul': 7,  'Aug': 8,

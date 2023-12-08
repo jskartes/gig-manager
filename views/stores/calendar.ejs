@@ -10,7 +10,7 @@
       <span class='date'><%= days[0].month %>/<%= days[0].date %></span>
     </div>
     <div class='calendar-day-field'>
-      <% user.availableTimes.forEach(time => { %>
+      <% store.owner.availableTimes.forEach(time => { %>
         <% time.forStores.forEach(forStore => { %>
           <% if (forStore.name === store.name && time.startTime.toLocaleDateString('en', dateFormat) === `${days[0].month}/${days[0].date}`) { %>
             <div class='timeslot'>
@@ -31,7 +31,7 @@
       <span class='date'><%= days[1].month %>/<%= days[1].date %></span>
     </div>
     <div class='calendar-day-field'>
-      <% user.availableTimes.forEach(time => { %>
+      <% store.owner.availableTimes.forEach(time => { %>
         <% time.forStores.forEach(forStore => { %>
           <% if (forStore.name === store.name && time.startTime.toLocaleDateString('en', dateFormat) === `${days[1].month}/${days[1].date}`) { %>
             <div class='timeslot'>
@@ -52,7 +52,7 @@
       <span class='date'><%= days[2].month %>/<%= days[2].date %></span>
     </div>
     <div class='calendar-day-field'>
-      <% user.availableTimes.forEach(time => { %>
+      <% store.owner.availableTimes.forEach(time => { %>
         <% time.forStores.forEach(forStore => { %>
           <% if (forStore.name === store.name && time.startTime.toLocaleDateString('en', dateFormat) === `${days[2].month}/${days[2].date}`) { %>
             <div class='timeslot'>
@@ -73,7 +73,7 @@
       <span class='date'><%= days[3].month %>/<%= days[3].date %></span>
     </div>
     <div class='calendar-day-field'>
-      <% user.availableTimes.forEach(time => { %>
+      <% store.owner.availableTimes.forEach(time => { %>
         <% time.forStores.forEach(forStore => { %>
           <% if (forStore.name === store.name && time.startTime.toLocaleDateString('en', dateFormat) === `${days[3].month}/${days[3].date}`) { %>
             <div class='timeslot'>
@@ -94,7 +94,7 @@
       <span class='date'><%= days[4].month %>/<%= days[4].date %></span>
     </div>
     <div class='calendar-day-field'>
-      <% user.availableTimes.forEach(time => { %>
+      <% store.owner.availableTimes.forEach(time => { %>
         <% time.forStores.forEach(forStore => { %>
           <% if (forStore.name === store.name && time.startTime.toLocaleDateString('en', dateFormat) === `${days[4].month}/${days[4].date}`) { %>
             <div class='timeslot'>
@@ -115,7 +115,7 @@
       <span class='date'><%= days[5].month %>/<%= days[5].date %></span>
     </div>
     <div class='calendar-day-field'>
-      <% user.availableTimes.forEach(time => { %>
+      <% store.owner.availableTimes.forEach(time => { %>
         <% time.forStores.forEach(forStore => { %>
           <% if (forStore.name === store.name && time.startTime.toLocaleDateString('en', dateFormat) === `${days[5].month}/${days[5].date}`) { %>
             <div class='timeslot'>
@@ -136,7 +136,7 @@
       <span class='date'><%= days[6].month %>/<%= days[6].date %></span>
     </div>
     <div class='calendar-day-field'>
-      <% user.availableTimes.forEach(time => { %>
+      <% store.owner.availableTimes.forEach(time => { %>
         <% time.forStores.forEach(forStore => { %>
           <% if (forStore.name === store.name && time.startTime.toLocaleDateString('en', dateFormat) === `${days[6].month}/${days[6].date}`) { %>
             <div class='timeslot'>
