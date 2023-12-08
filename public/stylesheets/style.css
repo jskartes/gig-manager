@@ -191,6 +191,7 @@ main {
 #splash-screen > h1 {
   color: var(--header-button-bgcol);
   font-size: 12vmin;
+  font-weight: normal;
   text-shadow: 0.5vmin -0.5vmin var(--header-logo-col);
 }
 

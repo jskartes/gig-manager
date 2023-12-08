@@ -4,6 +4,7 @@ const Store = require('../models/store');
 module.exports = {
   index,
   show,
+  showCalendar,
   confirmDelete,
   delete: deleteUserAccount
 }
@@ -17,6 +18,31 @@ async function show(req, res) {
   if (!res.locals.user) return res.redirect('/auth/google');
   const stores = await Store.find({ owner: res.locals.user._id });
   res.render('users/show', { stores });
+}
+
+function showCalendar(req, res) {
+  const months = {
+    'Jan': 1,  'Feb': 2,  'Mar': 3,  'Apr': 4,
+    'May': 5,  'Jun': 6,  'Jul': 7,  'Aug': 8,
+    'Sep': 9,  'Oct': 10, 'Nov': 11, 'Dec': 12
+  }
+  const now = new Date();
+  const days = [];
+  for (let i = 0; i < 7; i++) {
+    let newDay = new Date(now);
+    newDay.setDate(newDay.getDate() + i + (parseInt(req.query.week) * 7));
+    const formattedDay = newDay.toString().split(' ');
+    days.push({
+      day: formattedDay[0],
+      month: months[formattedDay[1]],
+      date: parseInt(formattedDay[2])
+    });
+  }
+  res.render('users/calendar', {
+    user: res.locals.user,
+    days,
+    week: parseInt(req.query.week)
+  });
 }
 
 function confirmDelete(req, res) {
