@@ -28,13 +28,13 @@ async function create(req, res) {
 }
 
 async function edit(req, res) {
-  const store = await Store.findById(req.params.storeid).populate('services');
+  const store = await Store.findById(req.params.storeid)
   const service = store.services.id(req.params.serviceid);
   res.render('services/edit', { store, service });
 }
 
 async function update(req, res) {
-  const store = await Store.findById(req.params.storeid).populate('services');
+  const store = await Store.findById(req.params.storeid)
   const service = store.services.id(req.params.serviceid);
   try {
     service.name = req.body.name;
@@ -49,7 +49,7 @@ async function update(req, res) {
 }
 
 async function deleteService(req, res) {
-  const store = await Store.findById(req.params.storeid).populate('services');
+  const store = await Store.findById(req.params.storeid)
   try {
     store.services.remove(req.params.serviceid);
     await store.save();

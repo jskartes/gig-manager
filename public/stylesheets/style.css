@@ -355,7 +355,7 @@ main {
   display: grid;
   gap: 6px;
   grid-template-columns: repeat(7, 1fr);
-  margin: 4vmin auto 0;
+  margin: 4vmin auto 6px;
   width: 80vw;
 }
 
@@ -393,6 +393,47 @@ main {
 .date {
   color: var(--header-logo-col);
   font-size: 2.25vmin;
+}
+
+#week-controls {
+  display: grid;
+  gap: 6px;
+  grid-template-columns: 1fr 1fr;
+  margin: 0 auto;
+  width: 80vw;
+}
+
+#week-controls > a {
+  text-decoration: none;
+}
+
+#week-controls > a > div {
+  background-color: var(--header-button-bgcol);
+  border-radius: 8px;
+  color: var(--header-logo-col);
+  font-size: 1.75vmin;
+  font-weight: bold;
+  padding: 6px 8px;
+  transition: 0.1s ease-in-out;
+}
+
+#week-controls > a:last-of-type {
+  text-align: right;
+}
+
+#week-controls > a > div:hover {
+  background-color: var(--cal-day-hover-bgcol);
+  box-shadow: 0 0 3px 1px var(--cal-day-hover-border-col);
+}
+
+#week-controls > a > .inactive-button {
+  color: var(--header-button-bgcol);
+  cursor: default;
+}
+
+#week-controls > a > .inactive-button:hover {
+  background-color: var(--header-button-bgcol);
+  box-shadow: unset;
 }
 
 @media screen and (orientation: portrait) {

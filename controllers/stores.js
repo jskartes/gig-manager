@@ -42,7 +42,28 @@ async function show(req, res) {
 
 async function showCalendar(req, res) {
   const store = await Store.findById(req.params.id);
-  res.render('stores/calendar', { store });
+  const months = {
+    'Jan': 1,  'Feb': 2,  'Mar': 3,  'Apr': 4,
+    'May': 5,  'Jun': 6,  'Jul': 7,  'Aug': 8,
+    'Sep': 9,  'Oct': 10, 'Nov': 11, 'Dec': 12
+  }
+  const now = new Date();
+  const days = [];
+  for (let i = 0; i < 7; i++) {
+    let newDay = new Date(now);
+    newDay.setDate(newDay.getDate() + i + (parseInt(req.query.week) * 7));
+    const formattedDay = newDay.toString().split(' ');
+    days.push({
+      day: formattedDay[0],
+      month: months[formattedDay[1]],
+      date: parseInt(formattedDay[2])
+    });
+  }
+  res.render('stores/calendar', {
+    store,
+    days,
+    week: parseInt(req.query.week)
+  });
 }
 
 async function confirmDelete(req, res) {
