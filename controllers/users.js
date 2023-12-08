@@ -51,6 +51,9 @@ async function showCalendar(req, res) {
 async function addAvailableTime(req, res) {
   const user = await User.findById(req.params.id);
   const stores = await Store.find({ owner: res.locals.user._id });
+  if (typeof req.body.forStores === 'string') {
+    req.body.forStores = [req.body.forStores];
+  }
   const forStores = req.body.forStores.map(forStore => {
     return stores.find(store => store.name === forStore);
   });

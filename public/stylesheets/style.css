@@ -117,7 +117,7 @@ form > input, form > textarea, form > select {
   border-radius: 4px;
   display: block;
   font-family: sans-serif;
-  font-size: 2vmin;
+  font-size: 1.75vmin;
   margin-bottom: 2vmin;
   padding: 3px 8px;
   width: 100%;
@@ -381,6 +381,7 @@ main {
   flex-direction: column;
   height: 35vh;
   justify-content: flex-start;
+  overflow-y: scroll;
   transition: 0.1s ease-in-out;
 }
 
@@ -397,7 +398,6 @@ main {
   font-weight: bold;
   justify-content: space-between;
   padding: 4px 8px;
-  width: 100%;
 }
 
 .day {
@@ -408,6 +408,13 @@ main {
 .date {
   color: var(--main-text-col);
   font-size: 2.25vmin;
+}
+
+#calendar > .calendar-day > .timeslot {
+  background-color: var(--transparent-overlay);
+  border-radius: 4px;
+  margin: 6px 6px 0;
+  padding: 6px;
 }
 
 #calendar-week-controls {
