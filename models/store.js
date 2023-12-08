@@ -46,6 +46,7 @@ const storeSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  description: String,
   clients: {
     type: [mongoose.Schema.Types.ObjectId],
     ref: 'User'

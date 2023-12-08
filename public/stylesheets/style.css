@@ -56,7 +56,7 @@ header > nav, header > nav > .nav-button > div {
 }
 
 header > nav > span {
-  border: 1px solid var(--body-bgcol);
+  border: 0.5px solid var(--body-bgcol);
   border-radius: 4px;
   color: white;
   display: inline-block;
@@ -119,10 +119,6 @@ form > input, form > textarea {
   width: 100%;
 }
 
-form > input:last-of-type {
-  margin-bottom: 1vmin;
-}
-
 form > button {
   background-color: var(--header-button-bgcol);
   border: none;
@@ -131,7 +127,7 @@ form > button {
   cursor: pointer;
   font-size: 1.75vmin;
   font-weight: bold;
-  margin: 2vmin 0 0.5vmin;
+  margin: 1vmin 0 0.5vmin;
   padding: 3px 6px;
   transition: 0.1s ease-in-out;
   width: 18vmin;
@@ -399,7 +395,7 @@ main {
 #week-controls {
   display: grid;
   gap: 6px;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   margin: 0 auto;
   width: 80vw;
 }
@@ -416,6 +412,10 @@ main {
   font-weight: bold;
   padding: 6px 8px;
   transition: 0.1s ease-in-out;
+}
+
+#week-controls > a:nth-of-type(2) {
+  text-align: center;
 }
 
 #week-controls > a:last-of-type {

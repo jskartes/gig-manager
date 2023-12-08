@@ -60,6 +60,6 @@ async function deleteUserAccount(req, res) {
       res.redirect(`/users/${user._id}`);
     }
   } else {
-    res.render('/users/confirm-delete', { deleteError: true });
+    res.render('users/confirm-delete', { deleteError: true });
   }
 }

@@ -57,18 +57,22 @@
 <div id='week-controls'>
   <% if (week === 0) { %>
     <a href='#'>
-      <div class='inactive-button'>
-        &laquo; Previous week
-      </div>
+      <div class='inactive-button'>&laquo; Previous week</div>
+    </a>
+    <a href='#'>
+      <div class='inactive-button'>This week</div>
     </a>
   <% } else { %>
-    <a
-      href='/stores/<%= store._id %>/calendar?week=<%= week - 1 %>'
-    ><div>&laquo; Previous week</div></a>
+    <a href='/stores/<%= store._id %>/calendar?week=<%= week - 1 %>'>
+      <div>&laquo; Previous week</div>
+    </a>
+    <a href='/stores/<%= store._id %>/calendar?week=0'>
+      <div>This week</div>
+    </a>
   <% } %>
-  <a
-    href='/stores/<%= store._id %>/calendar?week=<%= week + 1 %>'
-  ><div>Next week &raquo;</div></a>
+  <a href='/stores/<%= store._id %>/calendar?week=<%= week + 1 %>'>
+    <div>Next week &raquo;</div>
+  </a>
 </div>
 
 <%- include('../partials/footer') %>

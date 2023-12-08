@@ -18,6 +18,7 @@ async function newService(req, res) {
 
 async function create(req, res) {
   const store = await Store.findById(req.params.id);
+  if (req.body.price === '') delete req.body.price;
   store.services.push(req.body);
   try {
     await store.save();
