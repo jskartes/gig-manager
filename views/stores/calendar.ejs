@@ -1,228 +1,17 @@
 <%- include('../partials/header') %>
 
-<% let bookingActive = false; %>
-
 <span class='main-header gfont'><%= store.name %> &mdash; Calendar</span>
 <hr/>
 
 <div id='calendar-container'>
   <section id='calendar'>
-    <div class='calendar-day'>
-      <div class='calendar-day-label'>
-        <span class='day'><%= days[0].day %></span>
-        <span class='date'><%= days[0].month %>/<%= days[0].date %></span>
-      </div>
-      <div class='calendar-day-field'>
-        <% store.owner.availableTimes.forEach(time => { %>
-          <% time.forStores.forEach(forStore => { %>
-            <% if (forStore.name === store.name && time.startTime.toLocaleDateString('en', dateFormat) === `${days[0].month}/${days[0].date}`) { %>
-              <% if (time.isSelected) { %>
-                <% bookingActive = true; %>
-                <div class='timeslot' style='background-color: white'>
-              <% } else { %>
-                <div class='timeslot'>
-              <% } %>
-                <span class='timeslot-time'>
-                  <%= timeFormat.format(time.startTime) %> &ndash;
-                  <%= timeFormat.format(time.endTime) %>
-                </span>
-                <% if (!userIsAdmin && !time.isSelected) { %>
-                  <a href='/stores/<%= store._id %>/book/<%= time._id %>?week=<%= week %>'>
-                    <div>Book</div>
-                  </a>
-                <% } %>
-              </div>
-            <% } %>
-          <% }); %>
-        <% }); %>
-      </div>
-    </div>
-
-    <div class='calendar-day'>
-      <div class='calendar-day-label'>
-        <span class='day'><%= days[1].day %></span>
-        <span class='date'><%= days[1].month %>/<%= days[1].date %></span>
-      </div>
-      <div class='calendar-day-field'>
-        <% store.owner.availableTimes.forEach(time => { %>
-          <% time.forStores.forEach(forStore => { %>
-            <% if (forStore.name === store.name && time.startTime.toLocaleDateString('en', dateFormat) === `${days[1].month}/${days[1].date}`) { %>
-              <% if (time.isSelected) { %>
-                <% bookingActive = true; %>
-                <div class='timeslot' style='background-color: white'>
-              <% } else { %>
-                <div class='timeslot'>
-              <% } %>
-                <span class='timeslot-time'>
-                  <%= timeFormat.format(time.startTime) %> &ndash;
-                  <%= timeFormat.format(time.endTime) %>
-                </span>
-                <% if (!userIsAdmin && !time.isSelected) { %>
-                  <a href='/stores/<%= store._id %>/book/<%= time._id %>?week=<%= week %>'>
-                    <div>Book</div>
-                  </a>
-                <% } %>
-              </div>
-            <% } %>
-          <% }); %>
-        <% }); %>
-      </div>
-    </div>
-    
-    <div class='calendar-day'>
-      <div class='calendar-day-label'>
-        <span class='day'><%= days[2].day %></span>
-        <span class='date'><%= days[2].month %>/<%= days[2].date %></span>
-      </div>
-      <div class='calendar-day-field'>
-        <% store.owner.availableTimes.forEach(time => { %>
-          <% time.forStores.forEach(forStore => { %>
-            <% if (forStore.name === store.name && time.startTime.toLocaleDateString('en', dateFormat) === `${days[2].month}/${days[2].date}`) { %>
-              <% if (time.isSelected) { %>
-                <% bookingActive = true; %>
-                <div class='timeslot' style='background-color: white'>
-              <% } else { %>
-                <div class='timeslot'>
-              <% } %>
-                <span class='timeslot-time'>
-                  <%= timeFormat.format(time.startTime) %> &ndash;
-                  <%= timeFormat.format(time.endTime) %>
-                </span>
-                <% if (!userIsAdmin && !time.isSelected) { %>
-                  <a href='/stores/<%= store._id %>/book/<%= time._id %>?week=<%= week %>'>
-                    <div>Book</div>
-                  </a>
-                <% } %>
-              </div>
-            <% } %>
-          <% }); %>
-        <% }); %>
-      </div>
-    </div>
-
-    <div class='calendar-day'>
-      <div class='calendar-day-label'>
-        <span class='day'><%= days[3].day %></span>
-        <span class='date'><%= days[3].month %>/<%= days[3].date %></span>
-      </div>
-      <div class='calendar-day-field'>
-        <% store.owner.availableTimes.forEach(time => { %>
-          <% time.forStores.forEach(forStore => { %>
-            <% if (forStore.name === store.name && time.startTime.toLocaleDateString('en', dateFormat) === `${days[3].month}/${days[3].date}`) { %>
-              <% if (time.isSelected) { %>
-                <% bookingActive = true; %>
-                <div class='timeslot' style='background-color: white'>
-              <% } else { %>
-                <div class='timeslot'>
-              <% } %>
-                <span class='timeslot-time'>
-                  <%= timeFormat.format(time.startTime) %> &ndash;
-                  <%= timeFormat.format(time.endTime) %>
-                </span>
-                <% if (!userIsAdmin && !time.isSelected) { %>
-                  <a href='/stores/<%= store._id %>/book/<%= time._id %>?week=<%= week %>'>
-                    <div>Book</div>
-                  </a>
-                <% } %>
-              </div>
-            <% } %>
-          <% }); %>
-        <% }); %>
-      </div>
-    </div>
-
-    <div class='calendar-day'>
-      <div class='calendar-day-label'>
-        <span class='day'><%= days[4].day %></span>
-        <span class='date'><%= days[4].month %>/<%= days[4].date %></span>
-      </div>
-      <div class='calendar-day-field'>
-        <% store.owner.availableTimes.forEach(time => { %>
-          <% time.forStores.forEach(forStore => { %>
-            <% if (forStore.name === store.name && time.startTime.toLocaleDateString('en', dateFormat) === `${days[4].month}/${days[4].date}`) { %>
-              <% if (time.isSelected) { %>
-                <% bookingActive = true; %>
-                <div class='timeslot' style='background-color: white'>
-              <% } else { %>
-                <div class='timeslot'>
-              <% } %>
-                <span class='timeslot-time'>
-                  <%= timeFormat.format(time.startTime) %> &ndash;
-                  <%= timeFormat.format(time.endTime) %>
-                </span>
-                <% if (!userIsAdmin && !time.isSelected) { %>
-                  <a href='/stores/<%= store._id %>/book/<%= time._id %>?week=<%= week %>'>
-                    <div>Book</div>
-                  </a>
-                <% } %>
-              </div>
-            <% } %>
-          <% }); %>
-        <% }); %>
-      </div>
-    </div>
-
-    <div class='calendar-day'>
-      <div class='calendar-day-label'>
-        <span class='day'><%= days[5].day %></span>
-        <span class='date'><%= days[5].month %>/<%= days[5].date %></span>
-      </div>
-      <div class='calendar-day-field'>
-        <% store.owner.availableTimes.forEach(time => { %>
-          <% time.forStores.forEach(forStore => { %>
-            <% if (forStore.name === store.name && time.startTime.toLocaleDateString('en', dateFormat) === `${days[5].month}/${days[5].date}`) { %>
-              <% if (time.isSelected) { %>
-                <% bookingActive = true; %>
-                <div class='timeslot' style='background-color: white'>
-              <% } else { %>
-                <div class='timeslot'>
-              <% } %>
-                <span class='timeslot-time'>
-                  <%= timeFormat.format(time.startTime) %> &ndash;
-                  <%= timeFormat.format(time.endTime) %>
-                </span>
-                <% if (!userIsAdmin && !time.isSelected) { %>
-                  <a href='/stores/<%= store._id %>/book/<%= time._id %>?week=<%= week %>'>
-                    <div>Book</div>
-                  </a>
-                <% } %>
-              </div>
-            <% } %>
-          <% }); %>
-        <% }); %>
-      </div>
-    </div>
-
-    <div class='calendar-day'>
-      <div class='calendar-day-label'>
-        <span class='day'><%= days[6].day %></span>
-        <span class='date'><%= days[6].month %>/<%= days[6].date %></span>
-      </div>
-      <div class='calendar-day-field'>
-        <% store.owner.availableTimes.forEach(time => { %>
-          <% time.forStores.forEach(forStore => { %>
-            <% if (forStore.name === store.name && time.startTime.toLocaleDateString('en', dateFormat) === `${days[6].month}/${days[6].date}`) { %>
-              <% if (time.isSelected) { %>
-                <% bookingActive = true; %>
-                <div class='timeslot' style='background-color: white'>
-              <% } else { %>
-                <div class='timeslot'>
-              <% } %>
-                <span class='timeslot-time'>
-                  <%= timeFormat.format(time.startTime) %> &ndash;
-                  <%= timeFormat.format(time.endTime) %>
-                </span>
-                <% if (!userIsAdmin && !time.isSelected) { %>
-                  <a href='/stores/<%= store._id %>/book/<%= time._id %>?week=<%= week %>'>
-                    <div>Book</div>
-                  </a>
-                <% } %>
-              </div>
-            <% } %>
-          <% }); %>
-        <% }); %>
-      </div>
-    </div>
+    <%- include('../partials/store-calendar-day', { dayNum: 0 }) %>
+    <%- include('../partials/store-calendar-day', { dayNum: 1 }) %>
+    <%- include('../partials/store-calendar-day', { dayNum: 2 }) %>
+    <%- include('../partials/store-calendar-day', { dayNum: 3 }) %>
+    <%- include('../partials/store-calendar-day', { dayNum: 4 }) %>
+    <%- include('../partials/store-calendar-day', { dayNum: 5 }) %>
+    <%- include('../partials/store-calendar-day', { dayNum: 6 }) %>
   </section>
 
   <section id='calendar-week-controls'>
@@ -257,6 +46,20 @@
           <div class='store-menu-header gfont'>
             Confirm your booking with <%= store.name %>
           </div>
+          <form
+            action='/stores/<%= store._id %>/book-gig/<%= chosenTime._id %>'
+            method='POST'
+          >
+            <label>Choose a service:</label>
+            <select name='service'>
+              <% store.services.forEach(service => { %>
+                <option value='<%= service._id %>'>
+                  <%= service.name %> ($<%= service.price %>)
+                </option>
+              <% }); %>
+            </select>
+            <button type='submit'>Confirm</button>
+          </form>
         <% } %>
       </div>
     </section>

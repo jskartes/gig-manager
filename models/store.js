@@ -13,20 +13,6 @@ const messageSchema = new mongoose.Schema({
   timestamps: true
 });
 
-const gigSchema = new mongoose.Schema({
-  client: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
-  },
-  when: {
-    type: Date,
-    required: true
-  },
-  messages: [messageSchema]
-}, {
-  timestamps: true
-});
-
 const serviceSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -39,7 +25,25 @@ const serviceSchema = new mongoose.Schema({
   }
 }, {
   timestamps: true
-})
+});
+
+const gigSchema = new mongoose.Schema({
+  client: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  },  
+  service: {
+    type: serviceSchema,
+    required: true
+  },  
+  when: {
+    type: Date,
+    required: true
+  },  
+  messages: [messageSchema]
+}, {
+  timestamps: true
+});  
 
 const storeSchema = new mongoose.Schema({
   name: {

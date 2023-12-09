@@ -19,7 +19,13 @@
 
 <div class='store-menu'>
   <div class='store-menu-header gfont'>Service providers you hire</div>
-
+  <% user.stores.forEach(store => { %>
+    <a
+      class='store-link'
+      href='/stores/<%= store._id %>'
+    >&rarr;&nbsp;&nbsp;<%= store.name %></a>
+    <hr/>
+  <% }); %>
   <a href='/stores'><div>
     Browse stores
   </div></a>

@@ -1,5 +1,4 @@
 const Store = require('../models/store');
-const User = require('../models/user');
 
 module.exports = {
   index,
@@ -7,6 +6,7 @@ module.exports = {
   create,
   show,
   showCalendar,
+  selectTime,
   bookGig,
   confirmDelete,
   delete: deleteStore
@@ -54,8 +54,12 @@ async function showCalendar(req, res) {
         model: 'Store'
       }
     }
+  }).populate({
+    path: 'services'
   });
   const userIsAdmin = store.owner.equals(res.locals.user?._id);
+  const bookingActive = (req.query.bookingActive === 'true') || false;
+  const chosenTime = store.owner.availableTimes.id(req.query.chosenTime);
   const months = {
     'Jan': 1,  'Feb': 2,  'Mar': 3,  'Apr': 4,
     'May': 5,  'Jun': 6,  'Jul': 7,  'Aug': 8,
@@ -81,12 +85,15 @@ async function showCalendar(req, res) {
     timeFormat: new Intl.DateTimeFormat('en', {
       timeStyle: 'short'
     }),
-    dateFormat: { month: 'numeric', day: 'numeric' }
+    dateFormat: { month: 'numeric', day: 'numeric' },
+    bookingActive,
+    chosenTime
   });
 }
 
-async function bookGig(req, res) {
+async function selectTime(req, res) {
   const week = parseInt(req.query.week);
+  const bookingActive = req.query.bookingActive;
   const store = await Store.findById(req.params.storeid).populate({
     path: 'owner',
     model: 'User',
@@ -95,13 +102,29 @@ async function bookGig(req, res) {
     }
   });
   const time = store.owner.availableTimes.id(req.params.timeid);
-  time.isSelected = true;
+  time.isSelected = !time.isSelected;
   try {
     await store.owner.save();
   } catch (err) {
     console.log(err);
   }
-  res.redirect(`/stores/${store._id}/calendar?week=${week}`);
+  res.redirect(`/stores/${store._id}/calendar?week=${week}&bookingActive=${bookingActive}&chosenTime=${time._id}`);
+}
+
+async function bookGig(req, res) {
+  const store = await Store.findById(req.params.storeid).populate({
+    path: 'owner',
+    model: 'User'
+  }).populate({
+    path: 'services'
+  });
+  res.locals.user.stores.push(store._id);
+  try {
+    await res.locals.user.save();
+  } catch (err) {
+    console.log(err);
+  }
+  res.redirect(`/stores/${store._id}/calendar?week=0&bookingActive=false`);
 }
 
 async function confirmDelete(req, res) {

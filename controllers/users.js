@@ -17,6 +17,10 @@ function index(req, res) {
 
 async function show(req, res) {
   if (!res.locals.user) return res.redirect('/auth/google');
+  await res.locals.user.populate({
+    path: 'stores',
+    model: 'Store'
+  });
   const stores = await Store.find({ owner: res.locals.user._id })
                             .sort({ name: 'asc' });
   res.render('users/show', { stores });

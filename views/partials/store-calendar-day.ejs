@@ -1,0 +1,40 @@
+<div class='calendar-day'>
+  <div class='calendar-day-label'>
+    <span class='day'><%= days[dayNum].day %></span>
+    <span class='date'>
+      <%= days[dayNum].month %>/<%= days[dayNum].date %>
+    </span>
+  </div>
+  <div class='calendar-day-field'>
+    <% store.owner.availableTimes.forEach(time => { %>
+      <% time.forStores.forEach(forStore => { %>
+        <% if (forStore.name === store.name && time.startTime.toLocaleDateString('en', dateFormat) === `${days[dayNum].month}/${days[dayNum].date}`) { %>
+          <% if (time.isSelected) { %>
+            <div class='timeslot' style='background-color: white'>
+          <% } else { %>
+            <div class='timeslot'>
+          <% } %>
+            <span class='timeslot-time'>
+              <%= timeFormat.format(time.startTime) %> &ndash;
+              <%= timeFormat.format(time.endTime) %>
+            </span>
+            <% if (!userIsAdmin) { %>
+              <% if (!time.isSelected) { %>
+                <a href='/stores/<%= store._id %>/select-time/<%= time._id %>?week=<%= week %>&bookingActive=true'>
+                  <div>Book</div>
+                </a>
+              <% } else { %>
+                <a href='/stores/<%= store._id %>/select-time/<%= time._id %>?week=<%= week %>&bookingActive=false'>
+                  <div style='
+                    background-color: var(--main-text-col);
+                    color: var(--header-bgcol)
+                  '>Release</div>
+                </a>
+              <% } %>
+            <% } %>
+          </div>
+        <% } %>
+      <% }); %>
+    <% }); %>
+  </div>
+</div>
