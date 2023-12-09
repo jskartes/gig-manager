@@ -1,0 +1,24 @@
+<div class='calendar-day'>
+  <div class='calendar-day-label'>
+    <span class='day'><%= days[dayNum].day %></span>
+    <span class='date'><%= days[dayNum].month %>/<%= days[dayNum].date %></span>
+  </div>
+  <div class='calendar-day-field'>
+    <% user.availableTimes.forEach(time => { %>
+      <% if (time.startTime.toLocaleDateString('en', dateFormat) === `${days[dayNum].month}/${days[dayNum].date}`) { %>
+        <div class='timeslot'>
+          <span class='timeslot-time'>
+            <%= timeFormat.format(time.startTime) %> &ndash;
+            <%= timeFormat.format(time.endTime) %>
+          </span>
+          <div class='timeslot-stores-list'>
+            <% time.forStores.forEach(forStore => { %>
+              <span class='timeslot-store'><%= forStore.name %></span>
+            <% }); %>
+          </div>
+          <a href='#'><div>Edit</div></a>
+        </div>
+      <% } %>
+    <% }); %>
+  </div>
+</div>
