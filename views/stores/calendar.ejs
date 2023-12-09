@@ -42,6 +42,14 @@
           <div class='store-menu-header gfont'>
             Your upcoming services from <%= store.name %>
           </div>
+          <% userGigs.forEach(gig => { %>
+            <a
+              class='store-link'
+              href='#'
+            >
+              &rarr;&nbsp;&nbsp;<%= gig.service.name %> (<%= gig.startTime.toLocaleDateString('en', dateFormat) %>, <%= timeFormat.format(gig.startTime) %> &ndash; <%= timeFormat.format(gig.endTime) %>)
+            </a>
+          <% }); %>
         <% } else { %>
           <div class='store-menu-header gfont'>
             Confirm your booking with <%= store.name %>

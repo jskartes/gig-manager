@@ -57,6 +57,8 @@ async function showCalendar(req, res) {
     }
   }).populate({
     path: 'services'
+  }).populate({
+    path: 'gigs'
   });
   const userIsAdmin = store.owner.equals(res.locals.user?._id);
   const bookingActive = (req.query.bookingActive === 'true') || false;
@@ -78,6 +80,10 @@ async function showCalendar(req, res) {
       date: parseInt(formattedDay[2])
     });
   }
+  const userGigs = [];
+  store.gigs.forEach(gig => {
+    if (gig.client.equals(res.locals.user._id)) userGigs.push(gig);
+  });
   res.render('stores/calendar', {
     store,
     userIsAdmin,
@@ -88,7 +94,8 @@ async function showCalendar(req, res) {
     }),
     dateFormat: { month: 'numeric', day: 'numeric' },
     bookingActive,
-    chosenTime
+    chosenTime,
+    userGigs
   });
 }
 
@@ -133,10 +140,6 @@ async function bookGig(req, res) {
   req.body.service = store.services.id(req.body.service);
   req.body.startTime = time.startTime;
   req.body.endTime = time.endTime;
-  
-          /*----- DEBUG -----*/
-          console.log('req.body: ', req.body);
-  
   store.gigs.push(req.body);
   store.owner.availableTimes.pull(time._id);
   try {
