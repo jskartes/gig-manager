@@ -36,10 +36,14 @@ const gigSchema = new mongoose.Schema({
     type: serviceSchema,
     required: true
   },  
-  when: {
+  startTime: {
     type: Date,
     required: true
-  },  
+  },
+  endTime: {
+    type: Date,
+    required: true
+  },
   messages: [messageSchema]
 }, {
   timestamps: true

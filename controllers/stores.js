@@ -1,4 +1,5 @@
 const Store = require('../models/store');
+const User = require('../models/user');
 
 module.exports = {
   index,
@@ -114,13 +115,34 @@ async function selectTime(req, res) {
 async function bookGig(req, res) {
   const store = await Store.findById(req.params.storeid).populate({
     path: 'owner',
-    model: 'User'
+    model: 'User',
+    populate: {
+      path: 'availableTimes'
+    }
   }).populate({
     path: 'services'
   });
-  res.locals.user.stores.push(store._id);
+  const time = store.owner.availableTimes.id(req.params.timeid);
+  if (!(await User.findOne({
+    _id: res.locals.user._id,
+    stores: {
+      _id: store._id
+    }
+  }))) res.locals.user.stores.push(store._id);
+  req.body.client = res.locals.user._id;
+  req.body.service = store.services.id(req.body.service);
+  req.body.startTime = time.startTime;
+  req.body.endTime = time.endTime;
+  
+          /*----- DEBUG -----*/
+          console.log('req.body: ', req.body);
+  
+  store.gigs.push(req.body);
+  store.owner.availableTimes.pull(time._id);
   try {
     await res.locals.user.save();
+    await store.save();
+    await store.owner.save();
   } catch (err) {
     console.log(err);
   }
