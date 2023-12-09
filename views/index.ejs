@@ -5,9 +5,11 @@
 
   <div id='tagline' class='gfont'>book and be booked!</div>
 
-  <p class='gfont'>
-    click the [<strong style='font-family: sans-serif'>Signup / Login</strong>] link in the navbar above to get started!
-  </p>
+  <% if (!user) { %>
+    <p class='gfont'>
+      click the [<strong style='font-family: sans-serif'>Signup / Login</strong>] link in the navbar above to get started!
+    </p>
+  <% } %>
 
   <p class='gfont'>want to browse our service providers?</p>
   <a href='/stores'><div>Take a look!</div></a>
