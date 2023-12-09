@@ -12,6 +12,10 @@ const availableTimeSchema = new mongoose.Schema({
   forStores: {
     type: [mongoose.Schema.Types.ObjectId],
     ref: 'Store'
+  },
+  isSelected: {
+    type: Boolean,
+    default: false
   }
 }, {
   timestamps: true

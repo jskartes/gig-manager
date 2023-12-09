@@ -1,5 +1,7 @@
 <%- include('../partials/header') %>
 
+<% let bookingActive = false; %>
+
 <span class='main-header gfont'><%= store.name %> &mdash; Calendar</span>
 <hr/>
 
@@ -14,11 +16,21 @@
         <% store.owner.availableTimes.forEach(time => { %>
           <% time.forStores.forEach(forStore => { %>
             <% if (forStore.name === store.name && time.startTime.toLocaleDateString('en', dateFormat) === `${days[0].month}/${days[0].date}`) { %>
-              <div class='timeslot'>
+              <% if (time.isSelected) { %>
+                <% bookingActive = true; %>
+                <div class='timeslot' style='background-color: white'>
+              <% } else { %>
+                <div class='timeslot'>
+              <% } %>
                 <span class='timeslot-time'>
                   <%= timeFormat.format(time.startTime) %> &ndash;
                   <%= timeFormat.format(time.endTime) %>
                 </span>
+                <% if (!userIsAdmin && !time.isSelected) { %>
+                  <a href='/stores/<%= store._id %>/book/<%= time._id %>?week=<%= week %>'>
+                    <div>Book</div>
+                  </a>
+                <% } %>
               </div>
             <% } %>
           <% }); %>
@@ -35,18 +47,28 @@
         <% store.owner.availableTimes.forEach(time => { %>
           <% time.forStores.forEach(forStore => { %>
             <% if (forStore.name === store.name && time.startTime.toLocaleDateString('en', dateFormat) === `${days[1].month}/${days[1].date}`) { %>
-              <div class='timeslot'>
+              <% if (time.isSelected) { %>
+                <% bookingActive = true; %>
+                <div class='timeslot' style='background-color: white'>
+              <% } else { %>
+                <div class='timeslot'>
+              <% } %>
                 <span class='timeslot-time'>
                   <%= timeFormat.format(time.startTime) %> &ndash;
                   <%= timeFormat.format(time.endTime) %>
                 </span>
+                <% if (!userIsAdmin && !time.isSelected) { %>
+                  <a href='/stores/<%= store._id %>/book/<%= time._id %>?week=<%= week %>'>
+                    <div>Book</div>
+                  </a>
+                <% } %>
               </div>
             <% } %>
           <% }); %>
         <% }); %>
       </div>
     </div>
-
+    
     <div class='calendar-day'>
       <div class='calendar-day-label'>
         <span class='day'><%= days[2].day %></span>
@@ -56,11 +78,21 @@
         <% store.owner.availableTimes.forEach(time => { %>
           <% time.forStores.forEach(forStore => { %>
             <% if (forStore.name === store.name && time.startTime.toLocaleDateString('en', dateFormat) === `${days[2].month}/${days[2].date}`) { %>
-              <div class='timeslot'>
+              <% if (time.isSelected) { %>
+                <% bookingActive = true; %>
+                <div class='timeslot' style='background-color: white'>
+              <% } else { %>
+                <div class='timeslot'>
+              <% } %>
                 <span class='timeslot-time'>
                   <%= timeFormat.format(time.startTime) %> &ndash;
                   <%= timeFormat.format(time.endTime) %>
                 </span>
+                <% if (!userIsAdmin && !time.isSelected) { %>
+                  <a href='/stores/<%= store._id %>/book/<%= time._id %>?week=<%= week %>'>
+                    <div>Book</div>
+                  </a>
+                <% } %>
               </div>
             <% } %>
           <% }); %>
@@ -77,11 +109,21 @@
         <% store.owner.availableTimes.forEach(time => { %>
           <% time.forStores.forEach(forStore => { %>
             <% if (forStore.name === store.name && time.startTime.toLocaleDateString('en', dateFormat) === `${days[3].month}/${days[3].date}`) { %>
-              <div class='timeslot'>
+              <% if (time.isSelected) { %>
+                <% bookingActive = true; %>
+                <div class='timeslot' style='background-color: white'>
+              <% } else { %>
+                <div class='timeslot'>
+              <% } %>
                 <span class='timeslot-time'>
                   <%= timeFormat.format(time.startTime) %> &ndash;
                   <%= timeFormat.format(time.endTime) %>
                 </span>
+                <% if (!userIsAdmin && !time.isSelected) { %>
+                  <a href='/stores/<%= store._id %>/book/<%= time._id %>?week=<%= week %>'>
+                    <div>Book</div>
+                  </a>
+                <% } %>
               </div>
             <% } %>
           <% }); %>
@@ -98,11 +140,21 @@
         <% store.owner.availableTimes.forEach(time => { %>
           <% time.forStores.forEach(forStore => { %>
             <% if (forStore.name === store.name && time.startTime.toLocaleDateString('en', dateFormat) === `${days[4].month}/${days[4].date}`) { %>
-              <div class='timeslot'>
+              <% if (time.isSelected) { %>
+                <% bookingActive = true; %>
+                <div class='timeslot' style='background-color: white'>
+              <% } else { %>
+                <div class='timeslot'>
+              <% } %>
                 <span class='timeslot-time'>
                   <%= timeFormat.format(time.startTime) %> &ndash;
                   <%= timeFormat.format(time.endTime) %>
                 </span>
+                <% if (!userIsAdmin && !time.isSelected) { %>
+                  <a href='/stores/<%= store._id %>/book/<%= time._id %>?week=<%= week %>'>
+                    <div>Book</div>
+                  </a>
+                <% } %>
               </div>
             <% } %>
           <% }); %>
@@ -119,11 +171,21 @@
         <% store.owner.availableTimes.forEach(time => { %>
           <% time.forStores.forEach(forStore => { %>
             <% if (forStore.name === store.name && time.startTime.toLocaleDateString('en', dateFormat) === `${days[5].month}/${days[5].date}`) { %>
-              <div class='timeslot'>
+              <% if (time.isSelected) { %>
+                <% bookingActive = true; %>
+                <div class='timeslot' style='background-color: white'>
+              <% } else { %>
+                <div class='timeslot'>
+              <% } %>
                 <span class='timeslot-time'>
                   <%= timeFormat.format(time.startTime) %> &ndash;
                   <%= timeFormat.format(time.endTime) %>
                 </span>
+                <% if (!userIsAdmin && !time.isSelected) { %>
+                  <a href='/stores/<%= store._id %>/book/<%= time._id %>?week=<%= week %>'>
+                    <div>Book</div>
+                  </a>
+                <% } %>
               </div>
             <% } %>
           <% }); %>
@@ -140,11 +202,21 @@
         <% store.owner.availableTimes.forEach(time => { %>
           <% time.forStores.forEach(forStore => { %>
             <% if (forStore.name === store.name && time.startTime.toLocaleDateString('en', dateFormat) === `${days[6].month}/${days[6].date}`) { %>
-              <div class='timeslot'>
+              <% if (time.isSelected) { %>
+                <% bookingActive = true; %>
+                <div class='timeslot' style='background-color: white'>
+              <% } else { %>
+                <div class='timeslot'>
+              <% } %>
                 <span class='timeslot-time'>
                   <%= timeFormat.format(time.startTime) %> &ndash;
                   <%= timeFormat.format(time.endTime) %>
                 </span>
+                <% if (!userIsAdmin && !time.isSelected) { %>
+                  <a href='/stores/<%= store._id %>/book/<%= time._id %>?week=<%= week %>'>
+                    <div>Book</div>
+                  </a>
+                <% } %>
               </div>
             <% } %>
           <% }); %>
@@ -174,9 +246,21 @@
     </a>
   </section>
 
-  <section id='calendar-input-panel'>
-
-  </section>
+  <% if (!userIsAdmin) { %>
+    <section id='calendar-input-panel'>
+      <div class='store-menu'>
+        <% if (!bookingActive) { %>
+          <div class='store-menu-header gfont'>
+            Your upcoming services from <%= store.name %>
+          </div>
+        <% } else { %>
+          <div class='store-menu-header gfont'>
+            Confirm your booking with <%= store.name %>
+          </div>
+        <% } %>
+      </div>
+    </section>
+  <% } %>
 </div>
 
 <%- include('../partials/footer') %>

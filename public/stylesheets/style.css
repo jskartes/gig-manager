@@ -260,6 +260,11 @@ main {
   padding-bottom: 1vmin;
 }
 
+#calendar-input-panel > .store-menu {
+  margin: 4vmin auto 0;
+  width: 80vw;
+}
+
 .store-menu-header {
   align-items: center;
   background-color: var(--transparent-overlay);
@@ -328,11 +333,13 @@ main {
   font-weight: bold;
 }
 
-.store-menu > .service > .service-name > a {
+.store-menu > .service > .service-name > a,
+#calendar .timeslot > a {
   text-decoration: none;
 }
 
-.store-menu > .service > .service-name > a > div {
+.store-menu > .service > .service-name > a > div,
+#calendar .timeslot > a > div {
   background-color: var(--transparent-overlay);
   border-radius: 4px;
   color: var(--text-accent-col);
@@ -343,7 +350,13 @@ main {
   width: 8vmin;
 }
 
-.store-menu > .service > .service-name > a > div:hover {
+#calendar .timeslot > a > div {
+  font-size: 1.35vmin;
+  margin-top: 0.5vmin;
+}
+
+.store-menu > .service > .service-name > a > div:hover,
+#calendar .timeslot > a > div:hover {
   background-color: var(--button-hover-bgcol);
   color: var(--main-text-col);
 }
@@ -471,10 +484,6 @@ main {
   box-shadow: unset;
 }
 
-#calendar-input-panel {
-
-}
-
 #calendar-input-panel > form > select {
   width: 100%;
 }
@@ -493,10 +502,6 @@ main {
     grid-template-rows: 80vmax 10vmax;
   }
 
-  #calendar-input-panel {
-    
-  }
-    
   #calendar {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(7, 1fr);

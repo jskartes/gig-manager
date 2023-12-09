@@ -7,12 +7,13 @@ module.exports = {
   create,
   show,
   showCalendar,
+  bookGig,
   confirmDelete,
   delete: deleteStore
 }
 
 async function index(req, res) {
-  const stores = await Store.find({});
+  const stores = await Store.find({}).sort({ name: 'asc' });
   res.render('stores/index', { stores });
 }
 
@@ -54,6 +55,7 @@ async function showCalendar(req, res) {
       }
     }
   });
+  const userIsAdmin = store.owner.equals(res.locals.user?._id);
   const months = {
     'Jan': 1,  'Feb': 2,  'Mar': 3,  'Apr': 4,
     'May': 5,  'Jun': 6,  'Jul': 7,  'Aug': 8,
@@ -73,6 +75,7 @@ async function showCalendar(req, res) {
   }
   res.render('stores/calendar', {
     store,
+    userIsAdmin,
     days,
     week: parseInt(req.query.week),
     timeFormat: new Intl.DateTimeFormat('en', {
@@ -80,6 +83,25 @@ async function showCalendar(req, res) {
     }),
     dateFormat: { month: 'numeric', day: 'numeric' }
   });
+}
+
+async function bookGig(req, res) {
+  const week = parseInt(req.query.week);
+  const store = await Store.findById(req.params.storeid).populate({
+    path: 'owner',
+    model: 'User',
+    populate: {
+      path: 'availableTimes'
+    }
+  });
+  const time = store.owner.availableTimes.id(req.params.timeid);
+  time.isSelected = true;
+  try {
+    await store.owner.save();
+  } catch (err) {
+    console.log(err);
+  }
+  res.redirect(`/stores/${store._id}/calendar?week=${week}`);
 }
 
 async function confirmDelete(req, res) {
