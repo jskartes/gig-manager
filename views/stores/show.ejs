@@ -38,6 +38,12 @@
   <div class='store-menu'>
     <% if (userIsAdmin) { %>
       <div class='store-menu-header gfont'>Admin actions</div>
+      <% if (store.gigs.length) { %>
+        <a
+          class='store-link'
+          href='#'
+        >&rarr;&nbsp;&nbsp;Manage active bookings</a>
+      <% } %>
       <a
         class='store-link'
         href='/stores/<%= store._id %>/calendar?week=0'
