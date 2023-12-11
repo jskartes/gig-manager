@@ -9,6 +9,7 @@ module.exports = {
   showCalendar,
   selectTime,
   bookGig,
+  showGig,
   confirmDelete,
   delete: deleteStore
 }
@@ -150,6 +151,21 @@ async function bookGig(req, res) {
     console.log(err);
   }
   res.redirect(`/stores/${store._id}/calendar?week=0&bookingActive=false`);
+}
+
+async function showGig(req, res) {
+  const store = await Store.findById(req.params.storeid).populate({
+    path: 'gigs'
+  });
+  const gig = store.gigs.id(req.params.gigid);
+  res.render('stores/show-gig', {
+    store,
+    gig,
+    timeFormat: new Intl.DateTimeFormat('en', {
+      timeStyle: 'short'
+    }),
+    dateFormat: { month: 'numeric', day: 'numeric' },
+  });
 }
 
 async function confirmDelete(req, res) {

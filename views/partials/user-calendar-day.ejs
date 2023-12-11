@@ -6,7 +6,11 @@
   <div class='calendar-day-field'>
     <% user.availableTimes.forEach(time => { %>
       <% if (time.startTime.toLocaleDateString('en', dateFormat) === `${days[dayNum].month}/${days[dayNum].date}`) { %>
-        <div class='timeslot'>
+        <% if (time.isSelected) { %>
+          <div class='timeslot' style='background-color: white'>
+        <% } else { %>
+          <div class='timeslot'>
+        <% } %>
           <span class='timeslot-time'>
             <%= timeFormat.format(time.startTime) %> &ndash;
             <%= timeFormat.format(time.endTime) %>
@@ -16,7 +20,13 @@
               <span class='timeslot-store'><%= forStore.name %></span>
             <% }); %>
           </div>
-          <a href='#'><div>Edit</div></a>
+          <% if (time.isSelected) { %>
+            <p style='margin-top: 0.35vmin'>
+              <strong>&laquo; Reserved &raquo;</strong>
+            </p>
+          <% } else { %>
+            <a href='#'><div>Edit</div></a>
+          <% } %>
         </div>
       <% } %>
     <% }); %>

@@ -488,6 +488,47 @@ main {
   width: 100%;
 }
 
+#gig-view-container {
+  display: grid;
+  gap: 3vmin;
+  grid-template-columns: 1fr 1fr;
+  height: 95%;
+}
+
+#gig-provider {
+  display: inline-block;
+}
+
+#gig-provider, #gig-time {
+  font-size: 2vmin;
+  font-weight: bold;
+  margin-top: 1vmin;
+}
+
+#gig-description {
+  border-left: 2.5px solid var(--transparent-overlay);
+  margin-top: 1vmin;
+  padding-left: 1vmin;
+}
+
+#gig-messages {
+  background-color: var(--transparent-overlay);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+#gig-messages-display {
+  display: flex;
+  flex: 1;
+  flex-direction: column-reverse;
+}
+
+#gig-messages-input > form {
+  border-radius: 4px;
+  margin-bottom: 2vmin;
+}
+
 @media screen and (orientation: portrait) {
   main {
     padding: 4vmin 4vmin 0;

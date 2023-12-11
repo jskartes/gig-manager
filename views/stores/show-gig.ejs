@@ -1,0 +1,36 @@
+<%- include('../partials/header') %>
+
+<div id='gig-view-container'>
+  <div id='gig-details'>
+    <span class='main-header gfont'><%= gig.service.name %></span>
+    <hr/>
+
+    <em>Provided by</em> <span id='gig-provider'><%= store.name %></span>
+    <p id='gig-time'><%= gig.startTime.toLocaleDateString('en', dateFormat) %>, <%= timeFormat.format(gig.startTime) %> &ndash; <%= timeFormat.format(gig.endTime) %></p>
+    <p id='gig-description'><%= gig.service.description %></p>
+
+    <div class='store-menu'>
+      <div class='store-menu-header gfont'>Customer actions</div>
+      <a
+        class='store-link'
+        href='#'
+        style='color: red; font-weight: bold'
+      >&rarr;&nbsp;&nbsp;Cancel service</a>
+    </div>
+  </div>
+
+  <div id='gig-messages'>
+    <div id='gig-messages-display'>
+
+    </div>
+
+    <div id='gig-messages-input'>
+      <form action='#'>
+        <textarea></textarea>
+        <button type='submit'>Send message</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>

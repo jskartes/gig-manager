@@ -8,6 +8,7 @@ router.get('/:id', storesController.show);
 router.get('/:id/calendar', storesController.showCalendar);
 router.get('/:storeid/select-time/:timeid', storesController.selectTime);
 router.get('/:id/confirm-delete', storesController.confirmDelete);
+router.get('/:storeid/show-gig/:gigid', storesController.showGig);
 router.post('/', storesController.create);
 router.post('/:storeid/book-gig/:timeid', storesController.bookGig);
 router.delete('/:id', storesController.delete);

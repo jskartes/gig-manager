@@ -45,7 +45,7 @@
           <% userGigs.forEach(gig => { %>
             <a
               class='store-link'
-              href='#'
+              href='/stores/<%= store._id %>/show-gig/<%= gig._id %>'
             >
               &rarr;&nbsp;&nbsp;<%= gig.service.name %> (<%= gig.startTime.toLocaleDateString('en', dateFormat) %>, <%= timeFormat.format(gig.startTime) %> &ndash; <%= timeFormat.format(gig.endTime) %>)
             </a>
