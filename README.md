@@ -6,19 +6,19 @@
 
 ---
 
-![Screenshot 2023-12-11 at 3.18.46 PM.png](/Users/jsk/Desktop/Screenshot%202023-12-11%20at%203.18.46 PM.png)
+![Screenshot 2023-12-11 at 3.18.46 PM.png](./public/images/dashboard.png)
 
 Upon authenticating via **Google OAuth**, users are presented with their personal dashboard, where they can **create new stores** or **manage existing stores**, as well as return to stores from whom they've previously hired services, at a convenient glance. A user's personal availability is managed via their **calendar**:
 
-![Screenshot 2023-12-11 at 3.19.28 PM.png](/Users/jsk/Desktop/Screenshot%202023-12-11%20at%203.19.28 PM.png)
+![Screenshot 2023-12-11 at 3.19.28 PM.png](./public/images/calendar.png)
 
 The user can set their available time slots, assigning each slot to a particular store(s) that they manage.
 
-![Screenshot 2023-12-11 at 3.19.07 PM.png](/Users/jsk/Desktop/Screenshot%202023-12-11%20at%203.19.07 PM.png)
+![Screenshot 2023-12-11 at 3.19.07 PM.png](./public/images/calendar.png)
 
 The user can maintain a list of services on offer, along with all relevant details.
 
-![Screenshot 2023-12-11 at 3.19.54 PM.png](/Users/jsk/Desktop/Screenshot%202023-12-11%20at%203.19.54 PM.png)
+![Screenshot 2023-12-11 at 3.19.54 PM.png](./public/images/gig.png)
 
 Store owners and their clients can communicate via a forthcoming **chat feature**.
 
@@ -55,5 +55,3 @@ Completed **edit functionality for service providers' displayed available times*
 **Payment processing** capabilities using third-party transaction services
 
 **Store reviews** and **user experience stories** for all service providers
-
-
