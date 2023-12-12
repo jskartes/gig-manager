@@ -14,7 +14,7 @@ Upon authenticating via **Google OAuth**, users are presented with their persona
 
 The user can set their available time slots, assigning each slot to a particular store(s) that they manage.
 
-![Screenshot 2023-12-11 at 3.19.07 PM.png](./public/images/calendar.png)
+![Screenshot 2023-12-11 at 3.19.07 PM.png](./public/images/menu.png)
 
 The user can maintain a list of services on offer, along with all relevant details.
 
